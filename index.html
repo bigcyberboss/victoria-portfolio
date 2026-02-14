@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфолио Виктории Стрелковой — 5 вариантов</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+h1{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:300;text-align:center;margin-bottom:.5rem}
+h1 span{font-weight:700}
+p.sub{color:#888;font-size:.9rem;margin-bottom:3rem;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;width:100%;max-width:900px}
+.card{padding:2rem;border:1px solid rgba(255,255,255,.1);border-radius:12px;text-decoration:none;color:#fff;transition:all .3s;position:relative;overflow:hidden}
+.card:hover{border-color:rgba(255,255,255,.3);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.card .num{font-size:3rem;font-weight:700;opacity:.1;position:absolute;top:.5rem;right:1rem}
+.card h2{font-size:1.1rem;font-weight:600;margin-bottom:.3rem}
+.card p{font-size:.8rem;color:#888;line-height:1.5}
+.card:nth-child(1){background:linear-gradient(135deg,rgba(201,169,110,.15),transparent)}
+.card:nth-child(2){background:linear-gradient(135deg,rgba(212,165,165,.15),transparent)}
+.card:nth-child(3){background:linear-gradient(135deg,rgba(255,107,53,.15),transparent)}
+.card:nth-child(4){background:linear-gradient(135deg,rgba(255,214,10,.15),transparent)}
+.card:nth-child(5){background:linear-gradient(135deg,rgba(0,212,255,.15),transparent)}
+</style>
+</head>
+<body>
+<h1>Портфолио <span>Виктории Стрелковой</span></h1>
+<p class="sub">5 вариантов дизайна — выбери свой</p>
+<div class="grid">
+  <a href="portfolio-1-dark-elegance.html" class="card">
+    <span class="num">01</span>
+    <h2>Dark Elegance</h2>
+    <p>Тёмный фон, золотые акценты, кинематографический стиль премиум архитектурной студии</p>
+  </a>
+  <a href="portfolio-2-clean-airy.html" class="card">
+    <span class="num">02</span>
+    <h2>Clean & Airy</h2>
+    <p>Светлый, воздушный дизайн с розовыми акцентами, как журнал по дизайну интерьеров</p>
+  </a>
+  <a href="portfolio-3-creative-motion.html" class="card">
+    <span class="num">03</span>
+    <h2>Creative Motion</h2>
+    <p>Крупная типографика, асимметричная вёрстка, коралловые акценты, стиль Awwwards</p>
+  </a>
+  <a href="portfolio-4-neo-brutalism.html" class="card">
+    <span class="num">04</span>
+    <h2>Neo Brutalism</h2>
+    <p>Модный необрутализм — жирные рамки, тени, яркие плашки жёлтого, синего и розового</p>
+  </a>
+  <a href="portfolio-5-glass-glow.html" class="card">
+    <span class="num">05</span>
+    <h2>Glass & Glow</h2>
+    <p>Glassmorphism с матовым стеклом, неоновыми свечениями и анимированным фоном</p>
+  </a>
+</div>
+</body>
+</html>
