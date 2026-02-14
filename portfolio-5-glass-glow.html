@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Виктория Стрелкова — CGI Artist & 3D Visualizer</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0b1e;--cyan:#00d4ff;--purple:#b24bf3;--pink:#ff6b9d;--glass:rgba(255,255,255,.06);--glass-border:rgba(255,255,255,.1);--heading:'Outfit',sans-serif;--body:'Plus Jakarta Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#e0e0e0;font-family:var(--body);font-weight:300;line-height:1.7;overflow-x:hidden;position:relative}
+::selection{background:var(--purple);color:#fff}
+/* ANIMATED BG */
+.bg-orbs{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;animation:orbFloat 20s ease-in-out infinite}
+.orb-1{width:500px;height:500px;background:var(--purple);top:-10%;left:-10%;animation-delay:0s}
+.orb-2{width:400px;height:400px;background:var(--cyan);bottom:-10%;right:-10%;animation-delay:-7s}
+.orb-3{width:350px;height:350px;background:var(--pink);top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-14s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(50px,-30px) scale(1.1)}50%{transform:translate(-20px,40px) scale(.9)}75%{transform:translate(30px,20px) scale(1.05)}}
+/* GLASS CARD */
+.glass{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:16px}
+/* NAV */
+nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);width:calc(100% - 4rem);max-width:1100px;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;border-radius:50px}
+nav .logo{font-family:var(--heading);font-size:1.1rem;font-weight:600;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.8rem;font-weight:400;letter-spacing:.05em;transition:color .3s}
+nav a:hover{color:var(--cyan)}
+.burger{display:none;flex-direction:column;gap:4px;cursor:pointer}
+.burger span{width:22px;height:2px;background:var(--cyan);border-radius:2px}
+/* CONTENT WRAPPER */
+.content{position:relative;z-index:1}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem}
+.hero-badge{display:inline-block;padding:.5rem 1.5rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:2rem;border-radius:50px;opacity:0;animation:fadeUp .8s ease forwards .2s}
+.hero h1{font-family:var(--heading);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s ease forwards .4s}
+.hero h1 .glow{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{max-width:500px;color:rgba(255,255,255,.5);font-size:1rem;opacity:0;animation:fadeUp .8s ease forwards .6s}
+.hero-glow{width:200px;height:200px;background:radial-gradient(circle,var(--cyan),transparent);opacity:.15;border-radius:50%;margin-top:3rem;filter:blur(40px);animation:pulse 4s ease-in-out infinite}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.25;transform:scale(1.2)}}
+.fade-in{opacity:0;transform:translateY(40px);transition:all .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+/* SECTIONS */
+section{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem;font-weight:500}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;color:#fff;margin-bottom:2.5rem}
+.section-title .glow-text{background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* ABOUT */
+.about-card{padding:2.5rem;transition:all .4s}
+.about-card:hover{border-color:rgba(0,212,255,.3);box-shadow:0 0 30px rgba(0,212,255,.1)}
+.about-card p{margin-bottom:1rem;color:rgba(255,255,255,.6);font-size:.95rem}
+.about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.stat-glass{padding:1.5rem;text-align:center;border-radius:12px;transition:all .4s}
+.stat-glass:hover{border-color:rgba(178,75,243,.4);box-shadow:0 0 20px rgba(178,75,243,.15)}
+.stat-num{font-family:var(--heading);font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.3rem}
+/* SKILLS — circular progress */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.skill-item{text-align:center;padding:2rem;border-radius:12px;transition:all .4s}
+.skill-item:hover{border-color:rgba(0,212,255,.3);box-shadow:0 0 25px rgba(0,212,255,.1)}
+.skill-ring{width:90px;height:90px;border-radius:50%;position:relative;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center}
+.skill-ring svg{width:90px;height:90px;transform:rotate(-90deg);position:absolute;top:0;left:0}
+.skill-ring circle{fill:none;stroke-width:3}
+.skill-ring .bg-ring{stroke:rgba(255,255,255,.08)}
+.skill-ring .progress-ring{stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transition:stroke-dashoffset 1.5s ease}
+.skill-item.visible .progress-ring{stroke-dashoffset:var(--offset)}
+.skill-percent{font-family:var(--heading);font-size:1.1rem;font-weight:600;color:#fff;position:relative;z-index:1}
+.skill-name{font-size:.8rem;color:rgba(255,255,255,.5);letter-spacing:.05em}
+/* EXPERIENCE */
+.exp-timeline{position:relative;padding-left:3rem}
+.exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--cyan),var(--purple),var(--pink),transparent)}
+.exp-node{position:relative;padding-bottom:2.5rem}
+.exp-node::before{content:'';position:absolute;left:-3rem;top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan);transform:translateX(-5px)}
+.exp-glass{padding:2rem;border-radius:12px;transition:all .4s}
+.exp-glass:hover{border-color:rgba(0,212,255,.3);box-shadow:0 0 25px rgba(0,212,255,.1)}
+.exp-year{font-family:var(--heading);font-weight:600;color:var(--cyan);margin-bottom:.3rem}
+.exp-role{font-family:var(--heading);font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:1rem}
+.exp-list li{margin-bottom:.4rem;list-style:none;padding-left:1.2rem;position:relative;color:rgba(255,255,255,.5);font-size:.9rem}
+.exp-list li::before{content:'\2022';position:absolute;left:0;color:var(--purple)}
+/* EDUCATION */
+.edu-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.edu-glass{padding:2rem;border-radius:12px;transition:all .4s}
+.edu-glass:hover{border-color:rgba(255,107,157,.3);box-shadow:0 0 20px rgba(255,107,157,.1)}
+.edu-year{color:var(--pink);font-family:var(--heading);font-weight:600;margin-bottom:.3rem}
+.edu-degree{font-family:var(--heading);font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:.5rem}
+.edu-school{color:rgba(255,255,255,.4);font-size:.85rem}
+/* PORTFOLIO */
+.portfolio-glass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.pf-glass{aspect-ratio:4/3;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;transition:all .4s}
+.pf-glass:hover{border-color:rgba(0,212,255,.4);box-shadow:0 0 30px rgba(0,212,255,.15);transform:translateY(-4px)}
+.pf-gradient{width:100%;height:100%;transition:transform .5s}
+.pf-glass:hover .pf-gradient{transform:scale(1.05)}
+.pf-glass:nth-child(1) .pf-gradient{background:linear-gradient(135deg,#0f0b1e,#1e3a5f,#00d4ff)}
+.pf-glass:nth-child(2) .pf-gradient{background:linear-gradient(135deg,#2d1b69,#b24bf3,#ff6b9d)}
+.pf-glass:nth-child(3) .pf-gradient{background:linear-gradient(135deg,#0d5c63,#00d4ff,#b24bf3)}
+.pf-glass:nth-child(4) .pf-gradient{background:linear-gradient(135deg,#1a1a2e,#ff6b9d,#ffd60a)}
+.pf-glass:nth-child(5) .pf-gradient{background:linear-gradient(135deg,#0b1e0f,#06d6a0,#00d4ff)}
+.pf-glass:nth-child(6) .pf-gradient{background:linear-gradient(135deg,#1e0b1e,#b24bf3,#4361ee)}
+.pf-overlay{position:absolute;inset:0;background:rgba(15,11,30,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s;backdrop-filter:blur(5px)}
+.pf-glass:hover .pf-overlay{opacity:1}
+.pf-overlay span{font-family:var(--heading);font-weight:600;color:#fff;font-size:1rem}
+/* CONTACT */
+.contact-center{text-align:center}
+.contact-glass{display:inline-block;padding:3rem 4rem;border-radius:20px}
+.contact-links{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;justify-content:center}
+.contact-link{padding:.8rem 2rem;border-radius:50px;text-decoration:none;color:#fff;font-size:.85rem;font-weight:500;transition:all .3s}
+.contact-link:hover{box-shadow:0 0 20px rgba(0,212,255,.3);border-color:var(--cyan)}
+/* FOOTER */
+footer{text-align:center;padding:3rem;color:rgba(255,255,255,.3);font-size:.8rem;position:relative;z-index:1}
+footer a{color:var(--cyan);text-decoration:none}
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{width:calc(100% - 2rem);padding:.8rem 1.2rem;top:.5rem}
+  nav ul{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(15,11,30,.95);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;align-items:center;gap:2rem;z-index:100}
+  nav ul.active{display:flex}
+  .burger{display:flex}
+  section{padding:4rem 1.5rem}
+  .about-stats{grid-template-columns:1fr 1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .edu-row{grid-template-columns:1fr}
+  .portfolio-glass-grid{grid-template-columns:1fr 1fr}
+  .exp-timeline{padding-left:2rem}
+  .exp-node::before{left:-2rem}
+  .contact-glass{padding:2rem}
+  .contact-links{flex-direction:column;align-items:center}
+}
+@media(max-width:480px){
+  .about-stats{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .portfolio-glass-grid{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff;color:#222}
+  nav,.bg-orbs,.hero-glow{display:none}
+  .hero{min-height:auto;padding:2rem 0}
+  .hero h1{font-size:2.5rem}
+  .hero h1 .glow{-webkit-text-fill-color:#222;background:none}
+  .glass{background:#f5f5f5;backdrop-filter:none;border-color:#ddd}
+  .section-label{color:#666}
+  .section-title{color:#222}
+  .section-title .glow-text{-webkit-text-fill-color:#222;background:none}
+  .stat-num{-webkit-text-fill-color:#222;background:none}
+  .skill-ring .progress-ring{stroke:#999}
+  .exp-year,.edu-year{color:#555}
+  .exp-role,.edu-degree{color:#222}
+  .exp-list li,.about-card p,.edu-school,.skill-name{color:#444}
+  .portfolio-glass-grid{display:none}
+  .contact-link{color:#222;border-color:#ddd}
+  footer{color:#999}
+  footer a{color:#555}
+  section{padding:2rem 0}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<div class="content">
+
+<nav class="glass">
+  <div class="logo">Victoria S.</div>
+  <ul id="navMenu">
+    <li><a href="#about">О себе</a></li>
+    <li><a href="#skills">Навыки</a></li>
+    <li><a href="#experience">Опыт</a></li>
+    <li><a href="#portfolio">Работы</a></li>
+    <li><a href="#contact">Контакт</a></li>
+  </ul>
+  <div class="burger" onclick="document.getElementById('navMenu').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge glass">Дизайнер &middot; 3D-визуализатор &middot; CGI</div>
+  <h1>Виктория<br><span class="glow">Стрелкова</span></h1>
+  <p class="hero-desc">Фотореалистичные визуализации интерьеров, виртуальный стейджинг и дизайн с вниманием к каждой детали</p>
+  <div class="hero-glow"></div>
+</section>
+
+<section id="about">
+  <div class="fade-in">
+    <p class="section-label">Обо мне</p>
+    <h2 class="section-title">Креативность встречает <span class="glow-text">технологии</span></h2>
+  </div>
+  <div class="about-card glass fade-in">
+    <p>3D-художник с опытом 5+ лет в создании фотореалистичных визуализаций и виртуального стейджинга. Специалист с активной жизненной позицией, внимательная к деталям и ориентированная на качественный результат в срок.</p>
+    <p>Умею работать как самостоятельно, так и в команде, создавая интерьеры и мебель с реалистичной атмосферой и стилем. Виртуальный стейджинг для объектов зарубежной недвижимости.</p>
+    <div class="about-stats">
+      <div class="stat-glass glass"><div class="stat-num">5+</div><div class="stat-label">Лет опыта</div></div>
+      <div class="stat-glass glass"><div class="stat-num">100+</div><div class="stat-label">Проектов</div></div>
+      <div class="stat-glass glass"><div class="stat-num">50+</div><div class="stat-label">Клиентов</div></div>
+      <div class="stat-glass glass"><div class="stat-num">6+</div><div class="stat-label">Инструментов</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="fade-in">
+    <p class="section-label">Навыки</p>
+    <h2 class="section-title">Профессиональный <span class="glow-text">стек</span></h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-item glass fade-in">
+      <div class="skill-ring"><svg><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="progress-ring" cx="45" cy="45" r="40" stroke="var(--cyan)" style="--offset:13"/></svg><span class="skill-percent">95%</span></div>
+      <div class="skill-name">3ds Max</div>
+    </div>
+    <div class="skill-item glass fade-in">
+      <div class="skill-ring"><svg><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="progress-ring" cx="45" cy="45" r="40" stroke="var(--purple)" style="--offset:25"/></svg><span class="skill-percent">90%</span></div>
+      <div class="skill-name">Corona Render</div>
+    </div>
+    <div class="skill-item glass fade-in">
+      <div class="skill-ring"><svg><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="progress-ring" cx="45" cy="45" r="40" stroke="var(--pink)" style="--offset:38"/></svg><span class="skill-percent">85%</span></div>
+      <div class="skill-name">V-Ray</div>
+    </div>
+    <div class="skill-item glass fade-in">
+      <div class="skill-ring"><svg><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="progress-ring" cx="45" cy="45" r="40" stroke="var(--cyan)" style="--offset:25"/></svg><span class="skill-percent">90%</span></div>
+      <div class="skill-name">Photoshop</div>
+    </div>
+    <div class="skill-item glass fade-in">
+      <div class="skill-ring"><svg><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="progress-ring" cx="45" cy="45" r="40" stroke="var(--purple)" style="--offset:50"/></svg><span class="skill-percent">80%</span></div>
+      <div class="skill-name">ArchiCAD</div>
+    </div>
+    <div class="skill-item glass fade-in">
+      <div class="skill-ring"><svg><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="progress-ring" cx="45" cy="45" r="40" stroke="var(--pink)" style="--offset:63"/></svg><span class="skill-percent">75%</span></div>
+      <div class="skill-name">AI Tools</div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="fade-in">
+    <p class="section-label">Опыт работы</p>
+    <h2 class="section-title">Профессиональный <span class="glow-text">путь</span></h2>
+  </div>
+  <div class="exp-timeline">
+    <div class="exp-node fade-in">
+      <div class="exp-glass glass">
+        <div class="exp-year">2019 — 2025</div>
+        <div class="exp-role">Дизайнер-визуализатор (фриланс)</div>
+        <ul class="exp-list">
+          <li>Виртуальный стейджинг для объектов зарубежной недвижимости</li>
+          <li>Реалистичная визуализация жилых и коммерческих помещений</li>
+          <li>3ds Max, Corona Render, V-Ray, Photoshop, ArchiCAD</li>
+          <li>Плагины: MultiTexture, Floorgenerator, Unwrella, Hair and fur, Multiscatter</li>
+          <li>Работа с чертежами</li>
+          <li>Использование инструментов ИИ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="fade-in">
+    <p class="section-label">Образование</p>
+    <h2 class="section-title">Академическая <span class="glow-text">база</span></h2>
+  </div>
+  <div class="edu-row">
+    <div class="edu-glass glass fade-in">
+      <div class="edu-year">2016 — 2018</div>
+      <div class="edu-degree">Магистр</div>
+      <div class="edu-school">Севастопольский государственный университет<br>Электроника и наноэлектроника</div>
+    </div>
+    <div class="edu-glass glass fade-in">
+      <div class="edu-year">2012 — 2016</div>
+      <div class="edu-degree">Бакалавр</div>
+      <div class="edu-school">Севастопольский государственный университет<br>Электроника и наноэлектроника</div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="fade-in">
+    <p class="section-label">Портфолио</p>
+    <h2 class="section-title">Избранные <span class="glow-text">проекты</span></h2>
+  </div>
+  <div class="portfolio-glass-grid">
+    <div class="pf-glass glass fade-in"><div class="pf-gradient"></div><div class="pf-overlay"><span>Жилой интерьер</span></div></div>
+    <div class="pf-glass glass fade-in"><div class="pf-gradient"></div><div class="pf-overlay"><span>Коммерческий проект</span></div></div>
+    <div class="pf-glass glass fade-in"><div class="pf-gradient"></div><div class="pf-overlay"><span>Виртуальный стейджинг</span></div></div>
+    <div class="pf-glass glass fade-in"><div class="pf-gradient"></div><div class="pf-overlay"><span>Кухня-гостиная</span></div></div>
+    <div class="pf-glass glass fade-in"><div class="pf-gradient"></div><div class="pf-overlay"><span>Спальня</span></div></div>
+    <div class="pf-glass glass fade-in"><div class="pf-gradient"></div><div class="pf-overlay"><span>Офис</span></div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-center fade-in">
+    <p class="section-label">Контакт</p>
+    <h2 class="section-title">Готова обсудить<br>ваш <span class="glow-text">проект</span></h2>
+    <div class="contact-glass glass">
+      <div class="contact-links">
+        <a href="tel:+79787970762" class="contact-link glass">+7 (978) 797-07-62</a>
+        <a href="mailto:viktoria.strelkova888@gmail.com" class="contact-link glass">Email</a>
+        <a href="https://www.behance.net/viktoriast1ff9" target="_blank" class="contact-link glass">Behance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 Виктория Стрелкова &middot; <a href="https://www.behance.net/viktoriast1ff9">Behance</a></p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      obs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

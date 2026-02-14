@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Виктория Стрелкова — CGI Artist</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f5f5f0;--black:#1a1a1a;--coral:#ff6b35;--navy:#1a1a2e;--dim:#666;--heading:'Space Grotesk',sans-serif;--body:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--black);font-family:var(--body);font-weight:300;line-height:1.7;overflow-x:hidden;cursor:default}
+::selection{background:var(--coral);color:#fff}
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(245,245,240,.85);backdrop-filter:blur(15px);mix-blend-mode:normal}
+nav .logo{font-family:var(--heading);font-size:1.1rem;font-weight:700;color:var(--coral)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{color:var(--dim);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;transition:color .3s}
+nav a:hover{color:var(--coral)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:25px;height:2px;background:var(--coral)}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:2rem 3rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.1),transparent 70%);pointer-events:none;animation:float 8s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
+.hero-label{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);font-weight:500;margin-bottom:1rem;opacity:0;transform:translateX(-30px);animation:slideRight .6s ease forwards .3s}
+.hero h1{font-family:var(--heading);font-size:clamp(3.5rem,10vw,9rem);font-weight:700;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:slideUp .7s ease forwards .5s}
+.hero h1 .outline{-webkit-text-stroke:2px var(--black);color:transparent}
+.hero h1 .coral{color:var(--coral)}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2rem;opacity:0;animation:slideUp .7s ease forwards .8s}
+.hero-desc{max-width:400px;color:var(--dim);font-size:1rem}
+.hero-scroll{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);writing-mode:vertical-rl;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+@keyframes slideRight{to{opacity:1;transform:translateX(0)}}
+@keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(50px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-40px);transition:all .8s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:all .8s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+/* SECTIONS */
+section{padding:7rem 3rem;max-width:1200px;margin:0 auto}
+.section-num{font-family:var(--heading);font-size:5rem;font-weight:700;color:rgba(26,26,30,.05);line-height:1;margin-bottom:-2rem;position:relative;z-index:0}
+.section-label{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);font-weight:500;margin-bottom:.5rem;position:relative;z-index:1}
+.section-title{font-family:var(--heading);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;margin-bottom:3rem;letter-spacing:-.02em}
+/* ABOUT — split layout */
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text p{margin-bottom:1.2rem;color:var(--dim);font-size:1rem}
+.about-deco{width:100%;aspect-ratio:1;background:var(--navy);position:relative;overflow:hidden}
+.about-deco::before{content:'3D';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--heading);font-size:8rem;font-weight:700;color:rgba(255,107,53,.15)}
+.about-deco::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:50%;background:linear-gradient(transparent,var(--coral));opacity:.2}
+/* SKILLS */
+.skills-tags{display:flex;flex-wrap:wrap;gap:1rem}
+.skill-tag{padding:.8rem 1.5rem;border:2px solid var(--black);font-family:var(--heading);font-size:.85rem;font-weight:500;transition:all .3s;cursor:default}
+.skill-tag:hover{background:var(--coral);border-color:var(--coral);color:#fff;transform:translateY(-4px) rotate(-1deg)}
+.skill-tag:nth-child(even):hover{transform:translateY(-4px) rotate(1deg)}
+/* EXPERIENCE */
+.exp-block{display:grid;grid-template-columns:200px 1fr;gap:3rem;padding:3rem 0;border-bottom:1px solid rgba(26,26,26,.1)}
+.exp-year{font-family:var(--heading);font-size:1.5rem;font-weight:700;color:var(--coral)}
+.exp-role{font-family:var(--heading);font-size:1.3rem;font-weight:600;margin-bottom:1rem}
+.exp-list{color:var(--dim);font-size:.95rem}
+.exp-list li{margin-bottom:.5rem;list-style:none;padding-left:1.5rem;position:relative}
+.exp-list li::before{content:'/';position:absolute;left:0;color:var(--coral);font-weight:700}
+/* EDUCATION */
+.edu-flex{display:flex;gap:2rem}
+.edu-card{flex:1;padding:2rem;background:var(--navy);color:#fff;transition:transform .4s}
+.edu-card:hover{transform:translateY(-6px)}
+.edu-year{color:var(--coral);font-family:var(--heading);font-weight:700;margin-bottom:.5rem}
+.edu-degree{font-family:var(--heading);font-size:1.2rem;font-weight:600;margin-bottom:.5rem}
+.edu-school{color:rgba(255,255,255,.6);font-size:.9rem}
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.portfolio-item{aspect-ratio:4/3;position:relative;overflow:hidden;cursor:pointer}
+.portfolio-item .thumb{width:100%;height:100%;transition:all .5s cubic-bezier(.4,0,.2,1)}
+.portfolio-item:hover .thumb{transform:scale(1.1)}
+.portfolio-item:nth-child(1) .thumb{background:linear-gradient(135deg,#ff6b35,#ff8c5a)}
+.portfolio-item:nth-child(2) .thumb{background:linear-gradient(135deg,#1a1a2e,#2d2d5e)}
+.portfolio-item:nth-child(3) .thumb{background:linear-gradient(135deg,#2d5a27,#5a8a54)}
+.portfolio-item:nth-child(4) .thumb{background:linear-gradient(135deg,#5a2d5a,#8a548a)}
+.portfolio-item:nth-child(5) .thumb{background:linear-gradient(135deg,#2d4a5a,#548a9a)}
+.portfolio-item:nth-child(6) .thumb{background:linear-gradient(135deg,#5a4a2d,#8a7a54)}
+.portfolio-item:nth-child(1){grid-row:span 2}
+.portfolio-item:nth-child(1) .thumb{aspect-ratio:auto}
+.portfolio-hover{position:absolute;inset:0;background:rgba(26,26,30,.8);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s}
+.portfolio-item:hover .portfolio-hover{opacity:1}
+.portfolio-hover span{font-family:var(--heading);color:#fff;font-size:1.2rem;font-weight:600}
+/* CONTACT */
+.contact-section{background:var(--navy);color:#fff;padding:6rem 3rem;margin:0 -3rem;text-align:center}
+.contact-section .section-title{color:#fff;margin-bottom:1rem}
+.contact-desc{color:rgba(255,255,255,.5);margin-bottom:3rem;font-size:1.1rem}
+.contact-links{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+.contact-link{color:#fff;text-decoration:none;font-family:var(--heading);font-size:1rem;font-weight:500;padding:.8rem 2rem;border:2px solid rgba(255,255,255,.2);transition:all .3s}
+.contact-link:hover{border-color:var(--coral);background:var(--coral)}
+/* FOOTER */
+footer{padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--dim)}
+footer a{color:var(--coral);text-decoration:none}
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  nav ul{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:2rem;z-index:100}
+  nav ul.active{display:flex}
+  .burger{display:flex}
+  section{padding:4rem 1.5rem}
+  .hero{padding:2rem 1.5rem}
+  .about-split{grid-template-columns:1fr}
+  .about-deco{max-height:300px}
+  .exp-block{grid-template-columns:1fr}
+  .edu-flex{flex-direction:column}
+  .portfolio-grid{grid-template-columns:1fr 1fr}
+  .portfolio-item:nth-child(1){grid-row:span 1}
+  .contact-section{margin:0 -1.5rem;padding:4rem 1.5rem}
+  .hero-bottom{flex-direction:column;gap:1rem}
+  .hero-scroll{display:none}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+}
+@media print{
+  nav,.burger,.hero-bg,.hero-scroll,.about-deco::before,.about-deco::after{display:none}
+  body{background:#fff}
+  .hero{min-height:auto;padding:2rem 0}
+  .hero h1{font-size:3rem}
+  .hero h1 .outline{-webkit-text-stroke:1px #000;color:#000}
+  .contact-section{background:#f5f5f5;color:#222}
+  .contact-link{color:#222;border-color:#ccc}
+  .portfolio-grid{display:none}
+  section{padding:2rem 0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">V.S.</div>
+  <ul id="navMenu">
+    <li><a href="#about">О себе</a></li>
+    <li><a href="#skills">Навыки</a></li>
+    <li><a href="#experience">Опыт</a></li>
+    <li><a href="#portfolio">Работы</a></li>
+    <li><a href="#contact">Контакт</a></li>
+  </ul>
+  <div class="burger" onclick="document.getElementById('navMenu').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-label">CGI-artist / 3D-визуализатор</p>
+  <h1>
+    <span class="outline">ВИКТОРИЯ</span><br>
+    <span class="coral">СТРЕЛКОВА</span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">Фотореалистичные визуализации, виртуальный стейджинг и дизайн интерьеров с вниманием к каждой детали</p>
+    <span class="hero-scroll">Скролл вниз</span>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-num fade-in">01</div>
+  <p class="section-label fade-in">Обо мне</p>
+  <h2 class="section-title fade-in">Создаю пространства,<br>в которые хочется войти</h2>
+  <div class="about-split">
+    <div class="about-text fade-left">
+      <p>3D-художник с опытом 5+ лет в создании фотореалистичных визуализаций и виртуального стейджинга.</p>
+      <p>Специалист с активной жизненной позицией, внимательная к деталям и ориентированная на качественный результат в срок. Умею работать как самостоятельно, так и в команде.</p>
+      <p>Создаю интерьеры и мебель с реалистичной атмосферой и стилем. Виртуальный стейджинг для объектов зарубежной недвижимости.</p>
+    </div>
+    <div class="about-deco fade-right"></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-num fade-in">02</div>
+  <p class="section-label fade-in">Навыки</p>
+  <h2 class="section-title fade-in">Инструменты<br>и технологии</h2>
+  <div class="skills-tags">
+    <span class="skill-tag fade-in">3ds Max</span>
+    <span class="skill-tag fade-in">Corona Render</span>
+    <span class="skill-tag fade-in">V-Ray</span>
+    <span class="skill-tag fade-in">Photoshop</span>
+    <span class="skill-tag fade-in">ArchiCAD</span>
+    <span class="skill-tag fade-in">MultiTexture</span>
+    <span class="skill-tag fade-in">Floorgenerator</span>
+    <span class="skill-tag fade-in">Unwrella</span>
+    <span class="skill-tag fade-in">Hair and Fur</span>
+    <span class="skill-tag fade-in">Multiscatter</span>
+    <span class="skill-tag fade-in">AI Tools</span>
+    <span class="skill-tag fade-in">Virtual Staging</span>
+    <span class="skill-tag fade-in">Чертежи</span>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-num fade-in">03</div>
+  <p class="section-label fade-in">Опыт</p>
+  <h2 class="section-title fade-in">Профессиональный путь</h2>
+  <div class="exp-block fade-in">
+    <div class="exp-year">2019 —<br>2025</div>
+    <div>
+      <div class="exp-role">Дизайнер-визуализатор (фриланс)</div>
+      <ul class="exp-list">
+        <li>Виртуальный стейджинг для объектов зарубежной недвижимости</li>
+        <li>Реалистичная визуализация жилых и коммерческих помещений</li>
+        <li>Уверенное владение 3ds Max, Corona Render, V-Ray, Photoshop, ArchiCAD</li>
+        <li>Работа с плагинами MultiTexture, Floorgenerator, Unwrella, Hair and fur, Multiscatter</li>
+        <li>Работа с чертежами</li>
+        <li>Использование инструментов ИИ</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-num fade-in">04</div>
+  <p class="section-label fade-in">Образование</p>
+  <h2 class="section-title fade-in">Академическая база</h2>
+  <div class="edu-flex">
+    <div class="edu-card fade-in">
+      <div class="edu-year">2016 — 2018</div>
+      <div class="edu-degree">Магистр</div>
+      <div class="edu-school">Севастопольский государственный университет<br>Электроника и наноэлектроника</div>
+    </div>
+    <div class="edu-card fade-in">
+      <div class="edu-year">2012 — 2016</div>
+      <div class="edu-degree">Бакалавр</div>
+      <div class="edu-school">Севастопольский государственный университет<br>Электроника и наноэлектроника</div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-num fade-in">05</div>
+  <p class="section-label fade-in">Портфолио</p>
+  <h2 class="section-title fade-in">Избранные проекты</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item fade-in"><div class="thumb"></div><div class="portfolio-hover"><span>Жилой интерьер</span></div></div>
+    <div class="portfolio-item fade-in"><div class="thumb"></div><div class="portfolio-hover"><span>Коммерческий проект</span></div></div>
+    <div class="portfolio-item fade-in"><div class="thumb"></div><div class="portfolio-hover"><span>Виртуальный стейджинг</span></div></div>
+    <div class="portfolio-item fade-in"><div class="thumb"></div><div class="portfolio-hover"><span>Кухня-гостиная</span></div></div>
+    <div class="portfolio-item fade-in"><div class="thumb"></div><div class="portfolio-hover"><span>Спальня</span></div></div>
+    <div class="portfolio-item fade-in"><div class="thumb"></div><div class="portfolio-hover"><span>Офис</span></div></div>
+  </div>
+</section>
+
+<div id="contact" class="contact-section">
+  <p class="section-label" style="color:var(--coral)">Связаться</p>
+  <h2 class="section-title">Давайте создадим<br>что-то крутое</h2>
+  <p class="contact-desc">Открыта для новых проектов и сотрудничества</p>
+  <div class="contact-links">
+    <a href="tel:+79787970762" class="contact-link">+7 (978) 797-07-62</a>
+    <a href="mailto:viktoria.strelkova888@gmail.com" class="contact-link">Email</a>
+    <a href="https://www.behance.net/viktoriast1ff9" target="_blank" class="contact-link">Behance</a>
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2025 Виктория Стрелкова</span>
+  <a href="https://www.behance.net/viktoriast1ff9">behance.net/viktoriast1ff9</a>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      obs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in,.fade-left,.fade-right').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
