@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://vstrelkova.art/</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vstrelkova.art/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vstrelkova.art/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vstrelkova.art/" />
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/720779234669147.68c837142ba57.jpg</image:loc>
+      <image:title>Elegant Art-Deco Bathroom - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/009b0e233352841.68adf043abc47.jpg</image:loc>
+      <image:title>Organic Modern Bedroom - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/5f2415222739837.67ec24a1c3a0f.jpg</image:loc>
+      <image:title>Luxury Living Room Manhattan - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/5a919b222754913.67ec63cfa5517.jpg</image:loc>
+      <image:title>Neoclassical Master Bedroom - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/160e24233340527.68adc75e4d5eb.jpg</image:loc>
+      <image:title>Boutique in Manhattan - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/6531f3222737543.67ec1c8092054.jpg</image:loc>
+      <image:title>Classic Chelsea Studio - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/daa101233336943.68adbc622c96b.jpg</image:loc>
+      <image:title>Clubroom Interior Design - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/48cf16222754129.67ec5f9d8db83.jpg</image:loc>
+      <image:title>Minimalistic Apartment New York - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/9f5c35222867617.67ee71291e728.jpg</image:loc>
+      <image:title>Loft Bathroom Interior - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/5138ba233345317.68add6df37f06.jpg</image:loc>
+      <image:title>Living Dining Area North York Canada - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/09e038222755487.67ec673995ae7.jpg</image:loc>
+      <image:title>Stylish Living Room - Victoria Strelkova</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/a0baf9233341809.68adcb5f3d52f.jpg</image:loc>
+      <image:title>Home Gym Design - Victoria Strelkova</image:title>
+    </image:image>
+  </url>
+</urlset>

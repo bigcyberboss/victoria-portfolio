@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://vstrelkova.art/sitemap.xml
+
+Host: vstrelkova.art
