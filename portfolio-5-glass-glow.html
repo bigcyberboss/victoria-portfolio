@@ -31,12 +31,12 @@ nav a:hover{color:var(--cyan)}
 /* CONTENT WRAPPER */
 .content{position:relative;z-index:1}
 /* HERO */
-.hero{min-height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem}
+.hero{min-height:auto;padding-top:8rem;padding-bottom:4rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem}
 .hero-badge{display:inline-block;padding:.5rem 1.5rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:2rem;border-radius:50px;opacity:0;animation:fadeUp .8s ease forwards .2s}
 .hero h1{font-family:var(--heading);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s ease forwards .4s}
 .hero h1 .glow{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-desc{max-width:500px;color:rgba(255,255,255,.5);font-size:1rem;opacity:0;animation:fadeUp .8s ease forwards .6s}
-.hero-glow{width:200px;height:200px;background:radial-gradient(circle,var(--cyan),transparent);opacity:.15;border-radius:50%;margin-top:3rem;filter:blur(40px);animation:pulse 4s ease-in-out infinite}
+.hero-glow{display:none}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.25;transform:scale(1.2)}}
 .fade-in{opacity:0;transform:translateY(40px);transition:all .8s ease}
