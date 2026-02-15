@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Victoria Strelkova — CGI Artist & Interior Designer</title>
+        <title>Виктория Стрелкова — CGI Artist & Дизайнер интерьера</title>
         <meta
             name="description"
-            content="Victoria Strelkova — CGI artist and interior designer specializing in photorealistic 3D visualization. Transforming ideas into stunning visual experiences."
+            content="Виктория Стрелкова — CGI-художник и дизайнер интерьера. Фотореалистичная 3D-визуализация и дизайн интерьеров."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -141,6 +141,11 @@
             .nav-logo span {
                 color: var(--gold);
             }
+            .nav-right {
+                display: flex;
+                gap: 2.5rem;
+                align-items: center;
+            }
             .nav-links {
                 display: flex;
                 gap: 2.5rem;
@@ -156,22 +161,79 @@
             .nav-links a:hover {
                 color: var(--gold);
             }
-            .nav-cta {
-                font-size: 0.7rem;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                padding: 0.7rem 1.8rem;
-                border: 1px solid var(--gold);
-                color: var(--gold);
-                background: transparent;
-                cursor: pointer;
-                transition: all 0.4s var(--ease);
-                font-family: var(--sans);
+            .lang-switch {
+                display: flex;
+                gap: 0;
+                border: 1px solid rgba(201, 169, 110, 0.3);
+                overflow: hidden;
             }
-            .nav-cta:hover {
+            .lang-btn {
+                font-size: 0.65rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.4rem 0.8rem;
+                background: transparent;
+                color: var(--text3);
+                cursor: pointer;
+                border: none;
+                font-family: var(--sans);
+                transition: all 0.3s;
+            }
+            .lang-btn.active {
                 background: var(--gold);
                 color: var(--bg);
             }
+
+            /* BUTTONS - FIXED */
+            .btn-outline {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.8rem;
+                font-size: 0.75rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--gold);
+                border: 1px solid var(--gold);
+                padding: 1rem 2.5rem;
+                background: transparent;
+                transition: all 0.4s var(--ease);
+                cursor: pointer;
+                font-family: var(--sans);
+            }
+            .btn-outline:hover {
+                background: var(--gold);
+                color: #0a0a0a;
+                border-color: var(--gold);
+            }
+            .btn-outline svg {
+                width: 16px;
+                height: 16px;
+                transition: transform 0.3s;
+            }
+            .btn-outline:hover svg {
+                transform: translateX(4px);
+            }
+            .btn-solid {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.8rem;
+                font-size: 0.8rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #0a0a0a;
+                background: var(--gold);
+                padding: 1.2rem 3rem;
+                border: 2px solid var(--gold);
+                cursor: pointer;
+                transition: all 0.4s var(--ease);
+                font-family: var(--sans);
+                font-weight: 500;
+            }
+            .btn-solid:hover {
+                background: transparent;
+                color: var(--gold);
+            }
+
             .nav-burger {
                 display: none;
                 flex-direction: column;
@@ -251,9 +313,9 @@
                 background: linear-gradient(
                     to top,
                     rgba(10, 10, 10, 0.95) 0%,
-                    rgba(10, 10, 10, 0.4) 40%,
-                    rgba(10, 10, 10, 0.2) 70%,
-                    rgba(10, 10, 10, 0.3) 100%
+                    rgba(10, 10, 10, 0.5) 35%,
+                    rgba(10, 10, 10, 0.2) 60%,
+                    rgba(10, 10, 10, 0.35) 100%
                 );
             }
             .hero-content {
@@ -298,41 +360,15 @@
                 transform: translateY(20px);
                 transition: all 1s var(--ease-out) 0.8s;
             }
-            .hero-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.8rem;
-                font-size: 0.75rem;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: var(--gold);
-                border: 1px solid rgba(201, 169, 110, 0.4);
-                padding: 1rem 2.5rem;
-                transition: all 0.5s var(--ease);
+            .hero-cta {
                 opacity: 0;
                 transform: translateY(20px);
-                transition:
-                    all 1s var(--ease-out) 1s,
-                    background 0.4s,
-                    border-color 0.4s;
-            }
-            .hero-btn:hover {
-                background: var(--gold);
-                color: var(--bg);
-                border-color: var(--gold);
-            }
-            .hero-btn svg {
-                width: 16px;
-                height: 16px;
-                transition: transform 0.3s;
-            }
-            .hero-btn:hover svg {
-                transform: translateX(4px);
+                transition: all 1s var(--ease-out) 1s;
             }
             .hero.visible .hero-tag,
             .hero.visible h1,
             .hero.visible .hero-sub,
-            .hero.visible .hero-btn {
+            .hero.visible .hero-cta {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -404,8 +440,6 @@
                 line-height: 1.8;
                 font-size: 0.95rem;
             }
-
-            /* REVEAL ANIMATION */
             .reveal {
                 opacity: 0;
                 transform: translateY(40px);
@@ -460,9 +494,6 @@
                 border: 1px solid rgba(201, 169, 110, 0.2);
                 pointer-events: none;
             }
-            .about-text .section-tag {
-                margin-bottom: 1.5rem;
-            }
             .about-stats {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -498,7 +529,6 @@
                 color: var(--text3);
                 padding: 0.5rem 1rem;
                 border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 2px;
             }
 
             /* SERVICES */
@@ -550,7 +580,8 @@
             .service-icon {
                 font-size: 2rem;
                 margin-bottom: 1.5rem;
-                opacity: 0.8;
+                color: var(--gold);
+                opacity: 0.6;
             }
             .service-card h3 {
                 font-family: var(--serif);
@@ -577,12 +608,12 @@
             }
             .portfolio-filters {
                 display: flex;
-                gap: 1rem;
+                gap: 0.5rem;
                 flex-wrap: wrap;
             }
             .filter-btn {
                 font-size: 0.7rem;
-                letter-spacing: 0.15em;
+                letter-spacing: 0.12em;
                 text-transform: uppercase;
                 padding: 0.6rem 1.2rem;
                 border: 1px solid rgba(255, 255, 255, 0.1);
@@ -663,10 +694,6 @@
             }
             .project-card.wide {
                 grid-column: span 2;
-            }
-            .project-card.tall {
-                grid-row: span 2;
-                aspect-ratio: auto;
             }
 
             /* LIGHTBOX */
@@ -892,38 +919,21 @@
                 align-items: center;
                 gap: 0.8rem;
                 padding: 1rem 2rem;
-                border: 1px solid rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.15);
                 transition: all 0.4s var(--ease);
                 font-size: 0.85rem;
+                color: var(--text2);
             }
             .contact-link:hover {
                 border-color: var(--gold);
                 background: var(--gold-glow);
+                color: var(--gold);
             }
             .contact-link svg {
                 width: 18px;
                 height: 18px;
                 color: var(--gold);
-            }
-            .contact-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.8rem;
-                font-size: 0.8rem;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: var(--bg);
-                background: var(--gold);
-                padding: 1.2rem 3rem;
-                border: none;
-                cursor: pointer;
-                transition: all 0.4s var(--ease);
-                font-family: var(--sans);
-            }
-            .contact-btn:hover {
-                background: var(--gold2);
-                transform: translateY(-2px);
-                box-shadow: 0 10px 30px rgba(201, 169, 110, 0.2);
+                flex-shrink: 0;
             }
 
             /* FOOTER */
@@ -1018,7 +1028,6 @@
         </style>
     </head>
     <body>
-        <!-- LOADER -->
         <div class="loader"><div class="loader-line"></div></div>
 
         <!-- MOBILE MENU -->
@@ -1026,22 +1035,85 @@
             <button class="mobile-menu-close" onclick="closeMobile()">
                 &times;
             </button>
-            <a href="#about" onclick="closeMobile()">About</a>
-            <a href="#services" onclick="closeMobile()">Services</a>
-            <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-            <a href="#process" onclick="closeMobile()">Process</a>
-            <a href="#contact" onclick="closeMobile()">Contact</a>
+            <a
+                href="#about"
+                onclick="closeMobile()"
+                data-ru="Обо мне"
+                data-en="About"
+                >Обо мне</a
+            >
+            <a
+                href="#services"
+                onclick="closeMobile()"
+                data-ru="Услуги"
+                data-en="Services"
+                >Услуги</a
+            >
+            <a
+                href="#portfolio"
+                onclick="closeMobile()"
+                data-ru="Портфолио"
+                data-en="Portfolio"
+                >Портфолио</a
+            >
+            <a
+                href="#process"
+                onclick="closeMobile()"
+                data-ru="Процесс"
+                data-en="Process"
+                >Процесс</a
+            >
+            <a
+                href="#contact"
+                onclick="closeMobile()"
+                data-ru="Контакт"
+                data-en="Contact"
+                >Контакт</a
+            >
         </div>
 
         <!-- NAV -->
         <nav class="nav" id="nav">
             <a href="#" class="nav-logo">Victoria <span>Strelkova</span></a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#process">Process</a>
-                <a href="#contact" class="nav-cta">Get in Touch</a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#about" data-ru="Обо мне" data-en="About"
+                        >Обо мне</a
+                    >
+                    <a href="#services" data-ru="Услуги" data-en="Services"
+                        >Услуги</a
+                    >
+                    <a href="#portfolio" data-ru="Портфолио" data-en="Portfolio"
+                        >Портфолио</a
+                    >
+                    <a href="#process" data-ru="Процесс" data-en="Process"
+                        >Процесс</a
+                    >
+                </div>
+                <div class="lang-switch">
+                    <button
+                        class="lang-btn active"
+                        data-lang="ru"
+                        onclick="setLang('ru')"
+                    >
+                        RU
+                    </button>
+                    <button
+                        class="lang-btn"
+                        data-lang="en"
+                        onclick="setLang('en')"
+                    >
+                        EN
+                    </button>
+                </div>
+                <a
+                    href="#contact"
+                    class="btn-outline"
+                    style="padding: 0.6rem 1.5rem; font-size: 0.7rem"
+                    data-ru="Связаться"
+                    data-en="Get in Touch"
+                    >Связаться</a
+                >
             </div>
             <div class="nav-burger" onclick="openMobile()">
                 <span></span><span></span><span></span>
@@ -1059,23 +1131,45 @@
             </div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <div class="hero-tag">CGI Artist & Interior Designer</div>
-                <h1>Crafting Spaces That <em>Inspire</em></h1>
-                <p class="hero-sub">
-                    Photorealistic 3D visualization and interior design. I bring
-                    your vision to life before a single wall is built.
+                <div
+                    class="hero-tag"
+                    data-ru="CGI-ХУДОЖНИК & ДИЗАЙНЕР ИНТЕРЬЕРА"
+                    data-en="CGI ARTIST & INTERIOR DESIGNER"
+                >
+                    CGI-ХУДОЖНИК & ДИЗАЙНЕР ИНТЕРЬЕРА
+                </div>
+                <h1
+                    data-ru="Создаю пространства, которые <em>вдохновляют</em>"
+                    data-en="Crafting Spaces That <em>Inspire</em>"
+                >
+                    Создаю пространства, которые <em>вдохновляют</em>
+                </h1>
+                <p
+                    class="hero-sub"
+                    data-ru="Фотореалистичная 3D-визуализация и дизайн интерьера. Воплощаю ваши идеи в жизнь ещё до начала строительства."
+                    data-en="Photorealistic 3D visualization and interior design. I bring your vision to life before a single wall is built."
+                >
+                    Фотореалистичная 3D-визуализация и дизайн интерьера.
+                    Воплощаю ваши идеи в жизнь ещё до начала строительства.
                 </p>
-                <a href="#contact" class="hero-btn">
-                    Discuss Your Project
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
+                <div class="hero-cta">
+                    <a
+                        href="#contact"
+                        class="btn-outline"
+                        data-ru="Обсудить проект"
+                        data-en="Discuss Your Project"
                     >
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </a>
+                        Обсудить проект
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
             </div>
             <div class="hero-scroll">
                 <span>Scroll</span>
@@ -1084,7 +1178,7 @@
         </section>
 
         <!-- ABOUT -->
-        <section id="about" style="padding: 8rem 3rem">
+        <section id="about">
             <div class="about">
                 <div class="about-image reveal">
                     <img
@@ -1094,39 +1188,70 @@
                     />
                 </div>
                 <div class="about-text">
-                    <div class="section-tag reveal">About Me</div>
+                    <div
+                        class="section-tag reveal"
+                        data-ru="Обо мне"
+                        data-en="About Me"
+                    >
+                        Обо мне
+                    </div>
                     <h2 class="section-title reveal reveal-delay-1">
-                        Victoria Strelkova
+                        Виктория Стрелкова
                     </h2>
-                    <p class="section-desc reveal reveal-delay-2">
-                        I'm a CGI artist and interior designer with over 6 years
-                        of experience creating photorealistic visualizations
-                        that help clients see their dream spaces before
-                        construction begins. My work spans from luxury
-                        residences in Manhattan to contemporary apartments in
-                        Toronto, blending artistry with technical precision.
+                    <p
+                        class="section-desc reveal reveal-delay-2"
+                        data-ru="Я CGI-художник и дизайнер интерьера с более чем 6-летним опытом создания фотореалистичных визуализаций, которые помогают клиентам увидеть пространство мечты ещё до начала строительства. Мои проекты — от роскошных резиденций на Манхэттене до современных квартир в Торонто — сочетают художественное видение с технической точностью."
+                        data-en="I'm a CGI artist and interior designer with over 6 years of experience creating photorealistic visualizations that help clients see their dream spaces before construction begins. My work spans from luxury residences in Manhattan to contemporary apartments in Toronto, blending artistry with technical precision."
+                    >
+                        Я CGI-художник и дизайнер интерьера с более чем 6-летним
+                        опытом создания фотореалистичных визуализаций, которые
+                        помогают клиентам увидеть пространство мечты ещё до
+                        начала строительства. Мои проекты — от роскошных
+                        резиденций на Манхэттене до современных квартир в
+                        Торонто — сочетают художественное видение с технической
+                        точностью.
                     </p>
                     <p
                         class="section-desc reveal reveal-delay-3"
                         style="margin-top: 1rem"
+                        data-ru="Каждый мой рендер рассказывает историю света, текстуры и атмосферы. Я верю, что великий дизайн — это не только эстетика, это создание среды, которая откликается в людях, которые в ней живут."
+                        data-en="Every render I create tells a story of light, texture, and atmosphere. I believe great design isn't just about aesthetics — it's about creating environments that resonate with the people who inhabit them."
                     >
-                        Every render I create tells a story of light, texture,
-                        and atmosphere. I believe great design isn't just about
-                        aesthetics — it's about creating environments that
-                        resonate with the people who inhabit them.
+                        Каждый мой рендер рассказывает историю света, текстуры и
+                        атмосферы. Я верю, что великий дизайн — это не только
+                        эстетика, это создание среды, которая откликается в
+                        людях, которые в ней живут.
                     </p>
                     <div class="about-stats reveal reveal-delay-3">
                         <div>
                             <div class="stat-num">6+</div>
-                            <div class="stat-label">Years Experience</div>
+                            <div
+                                class="stat-label"
+                                data-ru="Лет опыта"
+                                data-en="Years Experience"
+                            >
+                                Лет опыта
+                            </div>
                         </div>
                         <div>
                             <div class="stat-num">50+</div>
-                            <div class="stat-label">Projects Completed</div>
+                            <div
+                                class="stat-label"
+                                data-ru="Проектов"
+                                data-en="Projects"
+                            >
+                                Проектов
+                            </div>
                         </div>
                         <div>
                             <div class="stat-num">12</div>
-                            <div class="stat-label">Cities Worldwide</div>
+                            <div
+                                class="stat-label"
+                                data-ru="Городов мира"
+                                data-en="Cities Worldwide"
+                            >
+                                Городов мира
+                            </div>
                         </div>
                     </div>
                     <div class="about-tools reveal reveal-delay-4">
@@ -1140,42 +1265,76 @@
         <!-- SERVICES -->
         <section class="services-section" id="services">
             <div class="services-header">
-                <div class="section-tag reveal">Services</div>
-                <h2 class="section-title reveal reveal-delay-1">What I Do</h2>
-                <p class="section-desc reveal reveal-delay-2">
-                    From initial concept to final render, I provide end-to-end
-                    visualization services that bring architectural visions to
-                    life.
+                <div
+                    class="section-tag reveal"
+                    data-ru="Услуги"
+                    data-en="Services"
+                >
+                    Услуги
+                </div>
+                <h2
+                    class="section-title reveal reveal-delay-1"
+                    data-ru="Чем я занимаюсь"
+                    data-en="What I Do"
+                >
+                    Чем я занимаюсь
+                </h2>
+                <p
+                    class="section-desc reveal reveal-delay-2"
+                    data-ru="От первоначальной концепции до финального рендера — полный цикл услуг визуализации, которые воплощают архитектурные идеи в жизнь."
+                    data-en="From initial concept to final render, I provide end-to-end visualization services that bring architectural visions to life."
+                >
+                    От первоначальной концепции до финального рендера — полный
+                    цикл услуг визуализации, которые воплощают архитектурные
+                    идеи в жизнь.
                 </p>
             </div>
             <div class="services-grid">
                 <div class="service-card reveal">
                     <div class="service-icon">&#9632;</div>
-                    <h3>3D Visualization</h3>
-                    <p>
-                        Photorealistic renders that capture every detail — from
-                        the play of natural light on marble surfaces to the
-                        texture of handwoven fabrics. Perfect for presentations,
-                        marketing, and design approval.
+                    <h3 data-ru="3D-визуализация" data-en="3D Visualization">
+                        3D-визуализация
+                    </h3>
+                    <p
+                        data-ru="Фотореалистичные рендеры, передающие каждую деталь — от игры естественного света на мраморных поверхностях до текстуры ткани ручной работы. Идеально для презентаций, маркетинга и согласования дизайна."
+                        data-en="Photorealistic renders that capture every detail — from the play of natural light on marble surfaces to the texture of handwoven fabrics. Perfect for presentations, marketing, and design approval."
+                    >
+                        Фотореалистичные рендеры, передающие каждую деталь — от
+                        игры естественного света на мраморных поверхностях до
+                        текстуры ткани ручной работы. Идеально для презентаций,
+                        маркетинга и согласования дизайна.
                     </p>
                 </div>
                 <div class="service-card reveal reveal-delay-1">
                     <div class="service-icon">&#9670;</div>
-                    <h3>Interior Design</h3>
-                    <p>
-                        Complete interior design concepts from mood boards to
-                        material palettes. I create cohesive spaces that balance
-                        beauty with functionality, tailored to each client's
-                        lifestyle and vision.
+                    <h3 data-ru="Дизайн интерьера" data-en="Interior Design">
+                        Дизайн интерьера
+                    </h3>
+                    <p
+                        data-ru="Полные концепции интерьера — от мудбордов до палитры материалов. Создаю гармоничные пространства, где красота сочетается с функциональностью, адаптированные под стиль жизни каждого клиента."
+                        data-en="Complete interior design concepts from mood boards to material palettes. I create cohesive spaces that balance beauty with functionality, tailored to each client's lifestyle and vision."
+                    >
+                        Полные концепции интерьера — от мудбордов до палитры
+                        материалов. Создаю гармоничные пространства, где красота
+                        сочетается с функциональностью, адаптированные под стиль
+                        жизни каждого клиента.
                     </p>
                 </div>
                 <div class="service-card reveal reveal-delay-2">
                     <div class="service-icon">&#9688;</div>
-                    <h3>Commercial Spaces</h3>
-                    <p>
-                        Boutiques, clubrooms, gyms, and commercial interiors
-                        designed to elevate your brand and create memorable
-                        experiences for your customers and guests.
+                    <h3
+                        data-ru="Коммерческие пространства"
+                        data-en="Commercial Spaces"
+                    >
+                        Коммерческие пространства
+                    </h3>
+                    <p
+                        data-ru="Бутики, клубные комнаты, спортзалы и коммерческие интерьеры, которые усиливают ваш бренд и создают незабываемый опыт для клиентов и гостей."
+                        data-en="Boutiques, clubrooms, gyms, and commercial interiors designed to elevate your brand and create memorable experiences for your customers and guests."
+                    >
+                        Бутики, клубные комнаты, спортзалы и коммерческие
+                        интерьеры, которые усиливают ваш бренд и создают
+                        незабываемый опыт для клиентов и гостей.
                     </p>
                 </div>
             </div>
@@ -1185,28 +1344,57 @@
         <section id="portfolio">
             <div class="portfolio-header">
                 <div>
-                    <div class="section-tag reveal">Portfolio</div>
-                    <h2 class="section-title reveal reveal-delay-1">
-                        Selected Works
+                    <div
+                        class="section-tag reveal"
+                        data-ru="Портфолио"
+                        data-en="Portfolio"
+                    >
+                        Портфолио
+                    </div>
+                    <h2
+                        class="section-title reveal reveal-delay-1"
+                        data-ru="Избранные работы"
+                        data-en="Selected Works"
+                    >
+                        Избранные работы
                     </h2>
                 </div>
                 <div class="portfolio-filters reveal reveal-delay-2">
-                    <button class="filter-btn active" data-filter="all">
-                        All
+                    <button
+                        class="filter-btn active"
+                        data-filter="all"
+                        data-ru="Все"
+                        data-en="All"
+                    >
+                        Все
                     </button>
-                    <button class="filter-btn" data-filter="residential">
-                        Residential
+                    <button
+                        class="filter-btn"
+                        data-filter="residential"
+                        data-ru="Жилые"
+                        data-en="Residential"
+                    >
+                        Жилые
                     </button>
-                    <button class="filter-btn" data-filter="commercial">
-                        Commercial
+                    <button
+                        class="filter-btn"
+                        data-filter="commercial"
+                        data-ru="Коммерция"
+                        data-en="Commercial"
+                    >
+                        Коммерция
                     </button>
-                    <button class="filter-btn" data-filter="bathroom">
-                        Bathroom
+                    <button
+                        class="filter-btn"
+                        data-filter="bathroom"
+                        data-ru="Ванные"
+                        data-en="Bathroom"
+                    >
+                        Ванные
                     </button>
                 </div>
             </div>
             <div class="portfolio-grid" id="portfolioGrid">
-                <!-- 1. Elegant Art-Deco Bathroom -->
                 <div
                     class="project-card wide reveal"
                     data-category="bathroom"
@@ -1218,20 +1406,30 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat"
-                            >Bathroom &middot; Art Deco</span
+                        <span
+                            class="project-cat"
+                            data-ru="Ванная &middot; Арт-деко"
+                            data-en="Bathroom &middot; Art Deco"
+                            >Ванная &middot; Арт-деко</span
                         >
-                        <h3>Elegant Art-Deco Bathroom</h3>
-                        <p class="project-desc">
-                            A luxurious bathroom where Art Deco grandeur meets
-                            modern comfort. Rich marble, gilded accents, and
-                            dramatic lighting create a space that feels like a
-                            private spa in a 1920s palace.
+                        <h3
+                            data-ru="Элегантная ванная в стиле Арт-деко"
+                            data-en="Elegant Art-Deco Bathroom"
+                        >
+                            Элегантная ванная в стиле Арт-деко
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Роскошная ванная, где величие Арт-деко встречает современный комфорт. Мрамор, позолота и драматичное освещение создают атмосферу частного спа."
+                            data-en="A luxurious bathroom where Art Deco grandeur meets modern comfort. Rich marble, gilded accents, and dramatic lighting create a private spa atmosphere."
+                        >
+                            Роскошная ванная, где величие Арт-деко встречает
+                            современный комфорт. Мрамор, позолота и драматичное
+                            освещение создают атмосферу частного спа.
                         </p>
                     </div>
                 </div>
 
-                <!-- 2. Organic Modern Bedroom -->
                 <div
                     class="project-card reveal reveal-delay-1"
                     data-category="residential"
@@ -1243,19 +1441,30 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat"
-                            >Bedroom &middot; Organic Modern</span
+                        <span
+                            class="project-cat"
+                            data-ru="Спальня &middot; Органик модерн"
+                            data-en="Bedroom &middot; Organic Modern"
+                            >Спальня &middot; Органик модерн</span
                         >
-                        <h3>Organic Modern Bedroom</h3>
-                        <p class="project-desc">
-                            Warm earth tones and natural textures create a
-                            serene retreat. Curved forms and soft lighting blur
-                            the line between nature and interior.
+                        <h3
+                            data-ru="Спальня в стиле Органик модерн"
+                            data-en="Organic Modern Bedroom"
+                        >
+                            Спальня в стиле Органик модерн
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Тёплые природные тона и натуральные текстуры создают умиротворённое убежище. Плавные формы и мягкий свет стирают грань между природой и интерьером."
+                            data-en="Warm earth tones and natural textures create a serene retreat. Curved forms and soft lighting blur the line between nature and interior."
+                        >
+                            Тёплые природные тона и натуральные текстуры создают
+                            умиротворённое убежище. Плавные формы и мягкий свет
+                            стирают грань между природой и интерьером.
                         </p>
                     </div>
                 </div>
 
-                <!-- 3. Luxury Living Room Manhattan -->
                 <div
                     class="project-card reveal reveal-delay-2"
                     data-category="residential"
@@ -1267,20 +1476,29 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat"
-                            >Living Room &middot; Luxury</span
+                        <span
+                            class="project-cat"
+                            data-ru="Гостиная &middot; Люкс"
+                            data-en="Living Room &middot; Luxury"
+                            >Гостиная &middot; Люкс</span
                         >
-                        <h3>Luxury Living Room, Manhattan</h3>
-                        <p class="project-desc">
-                            A sophisticated Manhattan residence where
-                            contemporary elegance meets timeless luxury. Curated
-                            furnishings and refined material palette define this
-                            living space.
+                        <h3
+                            data-ru="Роскошная гостиная, Манхэттен"
+                            data-en="Luxury Living Room, Manhattan"
+                        >
+                            Роскошная гостиная, Манхэттен
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Утончённая резиденция на Манхэттене, где современная элегантность встречает вневременную роскошь."
+                            data-en="A sophisticated Manhattan residence where contemporary elegance meets timeless luxury."
+                        >
+                            Утончённая резиденция на Манхэттене, где современная
+                            элегантность встречает вневременную роскошь.
                         </p>
                     </div>
                 </div>
 
-                <!-- 4. Neoclassical Master Bedroom -->
                 <div
                     class="project-card reveal"
                     data-category="residential"
@@ -1292,20 +1510,30 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat"
-                            >Bedroom &middot; Neoclassical</span
+                        <span
+                            class="project-cat"
+                            data-ru="Спальня &middot; Неоклассика"
+                            data-en="Bedroom &middot; Neoclassical"
+                            >Спальня &middot; Неоклассика</span
                         >
-                        <h3>Neoclassical Master Bedroom</h3>
-                        <p class="project-desc">
-                            Classical proportions reimagined for modern living.
-                            Soft upholstery, symmetrical composition, and warm
-                            ambient lighting create an atmosphere of quiet
-                            opulence.
+                        <h3
+                            data-ru="Неоклассическая спальня"
+                            data-en="Neoclassical Master Bedroom"
+                        >
+                            Неоклассическая спальня
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Классические пропорции, переосмысленные для современной жизни. Мягкая обивка, симметрия и тёплый свет создают атмосферу тихой роскоши."
+                            data-en="Classical proportions reimagined for modern living. Soft upholstery, symmetry, and warm ambient lighting create quiet opulence."
+                        >
+                            Классические пропорции, переосмысленные для
+                            современной жизни. Мягкая обивка, симметрия и тёплый
+                            свет создают атмосферу тихой роскоши.
                         </p>
                     </div>
                 </div>
 
-                <!-- 5. Boutique in Manhattan -->
                 <div
                     class="project-card wide reveal reveal-delay-1"
                     data-category="commercial"
@@ -1317,20 +1545,30 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat"
-                            >Commercial &middot; Retail</span
+                        <span
+                            class="project-cat"
+                            data-ru="Коммерция &middot; Бутик"
+                            data-en="Commercial &middot; Retail"
+                            >Коммерция &middot; Бутик</span
                         >
-                        <h3>Boutique in Manhattan</h3>
-                        <p class="project-desc">
-                            A high-end Manhattan boutique designed to elevate
-                            the shopping experience. Minimal architecture frames
-                            the merchandise as art, with strategic lighting
-                            guiding the customer journey.
+                        <h3
+                            data-ru="Бутик на Манхэттене"
+                            data-en="Boutique in Manhattan"
+                        >
+                            Бутик на Манхэттене
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Премиальный бутик, где минимальная архитектура обрамляет товар как произведение искусства, а стратегическое освещение ведёт покупателя."
+                            data-en="A high-end boutique where minimal architecture frames merchandise as art, with strategic lighting guiding the customer journey."
+                        >
+                            Премиальный бутик, где минимальная архитектура
+                            обрамляет товар как произведение искусства, а
+                            стратегическое освещение ведёт покупателя.
                         </p>
                     </div>
                 </div>
 
-                <!-- 6. Chelsea Studio -->
                 <div
                     class="project-card reveal reveal-delay-2"
                     data-category="residential"
@@ -1342,18 +1580,30 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat">Studio &middot; Classic</span>
-                        <h3>Classic Chelsea Studio</h3>
-                        <p class="project-desc">
-                            A pre-war Chelsea building studio transformed into a
-                            bright, functional living space. Original
-                            architectural details meet contemporary design
-                            sensibility.
+                        <span
+                            class="project-cat"
+                            data-ru="Студия &middot; Классика"
+                            data-en="Studio &middot; Classic"
+                            >Студия &middot; Классика</span
+                        >
+                        <h3
+                            data-ru="Классическая студия в Челси"
+                            data-en="Classic Chelsea Studio"
+                        >
+                            Классическая студия в Челси
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Довоенное здание в Челси, преобразованное в светлое функциональное пространство. Оригинальные архитектурные детали встречают современный дизайн."
+                            data-en="A pre-war Chelsea building transformed into a bright, functional space. Original architectural details meet contemporary design."
+                        >
+                            Довоенное здание в Челси, преобразованное в светлое
+                            функциональное пространство. Оригинальные
+                            архитектурные детали встречают современный дизайн.
                         </p>
                     </div>
                 </div>
 
-                <!-- 7. Clubroom -->
                 <div
                     class="project-card reveal"
                     data-category="commercial"
@@ -1365,19 +1615,27 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat"
-                            >Commercial &middot; Hospitality</span
+                        <span
+                            class="project-cat"
+                            data-ru="Коммерция &middot; Клуб"
+                            data-en="Commercial &middot; Hospitality"
+                            >Коммерция &middot; Клуб</span
                         >
-                        <h3>Clubroom</h3>
-                        <p class="project-desc">
-                            An exclusive clubroom where dark sophistication and
-                            plush comfort converge. Designed for intimate
-                            gatherings and refined leisure.
+                        <h3 data-ru="Клубная комната" data-en="Clubroom">
+                            Клубная комната
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Эксклюзивное пространство, где тёмная утончённость и мягкий комфорт создают атмосферу для камерных встреч и изысканного отдыха."
+                            data-en="An exclusive space where dark sophistication and plush comfort converge for intimate gatherings and refined leisure."
+                        >
+                            Эксклюзивное пространство, где тёмная утончённость и
+                            мягкий комфорт создают атмосферу для камерных встреч
+                            и изысканного отдыха.
                         </p>
                     </div>
                 </div>
 
-                <!-- 8. Minimalistic Apartment NY -->
                 <div
                     class="project-card reveal reveal-delay-1"
                     data-category="residential"
@@ -1389,19 +1647,30 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat"
-                            >Apartment &middot; Minimalist</span
+                        <span
+                            class="project-cat"
+                            data-ru="Квартира &middot; Минимализм"
+                            data-en="Apartment &middot; Minimalist"
+                            >Квартира &middot; Минимализм</span
                         >
-                        <h3>Minimalist Apartment, New York</h3>
-                        <p class="project-desc">
-                            Clean lines, neutral palette, and thoughtful spatial
-                            planning. Every element serves a purpose in this New
-                            York apartment where less truly means more.
+                        <h3
+                            data-ru="Минималистичная квартира, Нью-Йорк"
+                            data-en="Minimalist Apartment, New York"
+                        >
+                            Минималистичная квартира, Нью-Йорк
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Чистые линии, нейтральная палитра и продуманное зонирование. Каждый элемент несёт функцию в этой нью-йоркской квартире."
+                            data-en="Clean lines, neutral palette, and thoughtful spatial planning. Every element serves a purpose in this New York apartment."
+                        >
+                            Чистые линии, нейтральная палитра и продуманное
+                            зонирование. Каждый элемент несёт функцию в этой
+                            нью-йоркской квартире.
                         </p>
                     </div>
                 </div>
 
-                <!-- 9. Loft Bathroom -->
                 <div
                     class="project-card reveal reveal-delay-2"
                     data-category="bathroom"
@@ -1413,17 +1682,30 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat">Bathroom &middot; Loft</span>
-                        <h3>Loft Bathroom Interior</h3>
-                        <p class="project-desc">
-                            Industrial loft aesthetics softened with warm
-                            materials and moody lighting. Raw concrete meets
-                            polished brass in this dramatic bathroom design.
+                        <span
+                            class="project-cat"
+                            data-ru="Ванная &middot; Лофт"
+                            data-en="Bathroom &middot; Loft"
+                            >Ванная &middot; Лофт</span
+                        >
+                        <h3
+                            data-ru="Ванная в стиле лофт"
+                            data-en="Loft Bathroom Interior"
+                        >
+                            Ванная в стиле лофт
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Индустриальная эстетика лофта, смягчённая тёплыми материалами. Бетон встречает полированную латунь в этом драматичном дизайне."
+                            data-en="Industrial loft aesthetics softened with warm materials. Raw concrete meets polished brass in this dramatic bathroom design."
+                        >
+                            Индустриальная эстетика лофта, смягчённая тёплыми
+                            материалами. Бетон встречает полированную латунь в
+                            этом драматичном дизайне.
                         </p>
                     </div>
                 </div>
 
-                <!-- 10. Living Dining Area, Canada -->
                 <div
                     class="project-card wide reveal"
                     data-category="residential"
@@ -1435,18 +1717,30 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat">Living &middot; Dining</span>
-                        <h3>Living & Dining Area, North York</h3>
-                        <p class="project-desc">
-                            An open-plan living and dining space in Canada
-                            balancing warmth and modernity. Natural wood tones
-                            ground the design while expansive glazing connects
-                            interior with landscape.
+                        <span
+                            class="project-cat"
+                            data-ru="Гостиная &middot; Столовая"
+                            data-en="Living &middot; Dining"
+                            >Гостиная &middot; Столовая</span
+                        >
+                        <h3
+                            data-ru="Гостиная-столовая, Норт-Йорк"
+                            data-en="Living & Dining Area, North York"
+                        >
+                            Гостиная-столовая, Норт-Йорк
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Открытое пространство гостиной и столовой в Канаде — баланс теплоты и современности. Дерево и панорамное остекление соединяют интерьер с ландшафтом."
+                            data-en="An open-plan living and dining space in Canada balancing warmth and modernity. Wood and expansive glazing connect interior with landscape."
+                        >
+                            Открытое пространство гостиной и столовой в Канаде —
+                            баланс теплоты и современности. Дерево и панорамное
+                            остекление соединяют интерьер с ландшафтом.
                         </p>
                     </div>
                 </div>
 
-                <!-- 11. Stylish Living Room -->
                 <div
                     class="project-card reveal reveal-delay-1"
                     data-category="residential"
@@ -1458,19 +1752,29 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat"
-                            >Living Room &middot; Contemporary</span
+                        <span
+                            class="project-cat"
+                            data-ru="Гостиная &middot; Современная"
+                            data-en="Living Room &middot; Contemporary"
+                            >Гостиная &middot; Современная</span
                         >
-                        <h3>Stylish Living Room</h3>
-                        <p class="project-desc">
-                            Bold color accents punctuate a refined neutral base.
-                            This living room is designed for both everyday
-                            comfort and entertaining in style.
+                        <h3
+                            data-ru="Стильная гостиная"
+                            data-en="Stylish Living Room"
+                        >
+                            Стильная гостиная
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Яркие цветовые акценты на утончённой нейтральной базе. Гостиная для комфортной жизни и приёмов."
+                            data-en="Bold color accents on a refined neutral base. A living room designed for everyday comfort and entertaining."
+                        >
+                            Яркие цветовые акценты на утончённой нейтральной
+                            базе. Гостиная для комфортной жизни и приёмов.
                         </p>
                     </div>
                 </div>
 
-                <!-- 12. Home Gym -->
                 <div
                     class="project-card reveal reveal-delay-2"
                     data-category="commercial"
@@ -1482,15 +1786,23 @@
                         loading="lazy"
                     />
                     <div class="project-info">
-                        <span class="project-cat"
-                            >Commercial &middot; Fitness</span
+                        <span
+                            class="project-cat"
+                            data-ru="Коммерция &middot; Фитнес"
+                            data-en="Commercial &middot; Fitness"
+                            >Коммерция &middot; Фитнес</span
                         >
-                        <h3>Home Gym</h3>
-                        <p class="project-desc">
-                            A private gym that motivates. Dark tones, strategic
-                            mirror placement, and professional-grade equipment
-                            layout create a dedicated fitness environment at
-                            home.
+                        <h3 data-ru="Домашний спортзал" data-en="Home Gym">
+                            Домашний спортзал
+                        </h3>
+                        <p
+                            class="project-desc"
+                            data-ru="Частный спортзал, который мотивирует. Тёмные тона, стратегические зеркала и профессиональная планировка оборудования."
+                            data-en="A private gym that motivates. Dark tones, strategic mirrors, and professional equipment layout."
+                        >
+                            Частный спортзал, который мотивирует. Тёмные тона,
+                            стратегические зеркала и профессиональная планировка
+                            оборудования.
                         </p>
                     </div>
                 </div>
@@ -1500,49 +1812,86 @@
         <!-- PROCESS -->
         <section class="process-section" id="process">
             <div class="process-header">
-                <div class="section-tag reveal">How I Work</div>
-                <h2 class="section-title reveal reveal-delay-1">
-                    From Vision to Reality
+                <div
+                    class="section-tag reveal"
+                    data-ru="Как я работаю"
+                    data-en="How I Work"
+                >
+                    Как я работаю
+                </div>
+                <h2
+                    class="section-title reveal reveal-delay-1"
+                    data-ru="От идеи до реализации"
+                    data-en="From Vision to Reality"
+                >
+                    От идеи до реализации
                 </h2>
-                <p class="section-desc reveal reveal-delay-2">
-                    A transparent, collaborative process that ensures your
-                    project exceeds expectations at every stage.
+                <p
+                    class="section-desc reveal reveal-delay-2"
+                    data-ru="Прозрачный и совместный процесс, который гарантирует, что ваш проект превзойдёт ожидания на каждом этапе."
+                    data-en="A transparent, collaborative process that ensures your project exceeds expectations at every stage."
+                >
+                    Прозрачный и совместный процесс, который гарантирует, что
+                    ваш проект превзойдёт ожидания на каждом этапе.
                 </p>
             </div>
             <div class="process-timeline">
                 <div class="process-step reveal">
                     <div class="step-num">01</div>
-                    <h3>Brief & Research</h3>
-                    <p>
-                        We discuss your vision, preferences, and requirements. I
-                        study the space, gather references, and define the
-                        project direction.
+                    <h3 data-ru="Бриф и аналитика" data-en="Brief & Research">
+                        Бриф и аналитика
+                    </h3>
+                    <p
+                        data-ru="Обсуждаем ваше видение, предпочтения и требования. Изучаю пространство, собираю референсы и определяю направление проекта."
+                        data-en="We discuss your vision, preferences, and requirements. I study the space, gather references, and define the project direction."
+                    >
+                        Обсуждаем ваше видение, предпочтения и требования.
+                        Изучаю пространство, собираю референсы и определяю
+                        направление проекта.
                     </p>
                 </div>
                 <div class="process-step reveal reveal-delay-1">
                     <div class="step-num">02</div>
-                    <h3>Concept Development</h3>
-                    <p>
-                        Mood boards, material palettes, and spatial planning.
-                        You see the design direction before any 3D work begins.
+                    <h3
+                        data-ru="Разработка концепции"
+                        data-en="Concept Development"
+                    >
+                        Разработка концепции
+                    </h3>
+                    <p
+                        data-ru="Мудборды, палитра материалов и планировка пространства. Вы видите направление дизайна до начала 3D-работ."
+                        data-en="Mood boards, material palettes, and spatial planning. You see the design direction before any 3D work begins."
+                    >
+                        Мудборды, палитра материалов и планировка пространства.
+                        Вы видите направление дизайна до начала 3D-работ.
                     </p>
                 </div>
                 <div class="process-step reveal reveal-delay-2">
                     <div class="step-num">03</div>
-                    <h3>3D Visualization</h3>
-                    <p>
-                        Photorealistic renders bring the concept to life. Every
-                        detail — lighting, materials, furniture — is refined
-                        until perfect.
+                    <h3 data-ru="3D-визуализация" data-en="3D Visualization">
+                        3D-визуализация
+                    </h3>
+                    <p
+                        data-ru="Фотореалистичные рендеры оживляют концепцию. Каждая деталь — освещение, материалы, мебель — доводится до совершенства."
+                        data-en="Photorealistic renders bring the concept to life. Every detail — lighting, materials, furniture — is refined until perfect."
+                    >
+                        Фотореалистичные рендеры оживляют концепцию. Каждая
+                        деталь — освещение, материалы, мебель — доводится до
+                        совершенства.
                     </p>
                 </div>
                 <div class="process-step reveal reveal-delay-3">
                     <div class="step-num">04</div>
-                    <h3>Final Delivery</h3>
-                    <p>
-                        High-resolution renders, technical drawings, and
-                        specifications. Everything you need to bring the design
-                        to reality.
+                    <h3 data-ru="Финальная сдача" data-en="Final Delivery">
+                        Финальная сдача
+                    </h3>
+                    <p
+                        data-ru="Рендеры в высоком разрешении, технические чертежи и спецификации. Всё, что нужно для воплощения дизайна в реальность."
+                        data-en="High-resolution renders, technical drawings, and specifications. Everything you need to bring the design to reality."
+                    >
+                        Рендеры в высоком разрешении, технические чертежи и
+                        спецификации. Всё, что нужно для воплощения дизайна в
+                        реальность.
                     </p>
                 </div>
             </div>
@@ -1558,21 +1907,35 @@
                 />
             </div>
             <div class="contact-content">
-                <div class="section-tag reveal">Get in Touch</div>
-                <h2 class="section-title reveal reveal-delay-1">
-                    Let's Create Something
+                <div
+                    class="section-tag reveal"
+                    data-ru="Контакт"
+                    data-en="Get in Touch"
+                >
+                    Контакт
+                </div>
+                <h2
+                    class="section-title reveal reveal-delay-1"
+                    data-ru='Давайте создадим что-то <em style="font-family:var(--serif);font-style:italic;color:var(--gold)">прекрасное</em>'
+                    data-en='Let&apos;s Create Something <em style="font-family:var(--serif);font-style:italic;color:var(--gold)">Beautiful</em>'
+                >
+                    Давайте создадим что-то
                     <em
                         style="
                             font-family: var(--serif);
                             font-style: italic;
                             color: var(--gold);
                         "
-                        >Beautiful</em
+                        >прекрасное</em
                     >
                 </h2>
-                <p class="section-desc reveal reveal-delay-2">
-                    Have a project in mind? I'd love to hear about it. Let's
-                    discuss how we can transform your space.
+                <p
+                    class="section-desc reveal reveal-delay-2"
+                    data-ru="Есть проект? Буду рада обсудить, как мы можем преобразить ваше пространство."
+                    data-en="Have a project in mind? I'd love to hear about it. Let's discuss how we can transform your space."
+                >
+                    Есть проект? Буду рада обсудить, как мы можем преобразить
+                    ваше пространство.
                 </p>
                 <div class="contact-links reveal reveal-delay-3">
                     <a
@@ -1618,9 +1981,11 @@
                 </div>
                 <a
                     href="mailto:viktoria.strelkova888@gmail.com"
-                    class="contact-btn reveal reveal-delay-4"
+                    class="btn-solid reveal reveal-delay-4"
+                    data-ru="Обсудить проект"
+                    data-en="Discuss Your Project"
                 >
-                    Discuss Your Project
+                    Обсудить проект
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -1637,7 +2002,7 @@
 
         <!-- FOOTER -->
         <footer class="footer">
-            <div>&copy; 2025 Victoria Strelkova. All rights reserved.</div>
+            <div>&copy; 2025 Victoria Strelkova</div>
             <div class="footer-social">
                 <a href="https://www.behance.net/viktoriast1ff9" target="_blank"
                     >Behance</a
@@ -1676,16 +2041,20 @@
                     id="lightboxLink"
                     href="#"
                     target="_blank"
-                    >View on Behance &rarr;</a
+                    data-ru="Смотреть на Behance &rarr;"
+                    data-en="View on Behance &rarr;"
+                    >Смотреть на Behance &rarr;</a
                 >
             </div>
         </div>
 
         <script>
-            // PROJECT DATA
             const projects = [
                 {
-                    title: "Elegant Art-Deco Bathroom",
+                    title: {
+                        ru: "Элегантная ванная Арт-деко",
+                        en: "Elegant Art-Deco Bathroom",
+                    },
                     url: "https://www.behance.net/gallery/234669147/Elegant-Art-Deco-Bathroom",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/720779234669147.68c837142ba57.jpg",
@@ -1695,7 +2064,10 @@
                     ],
                 },
                 {
-                    title: "Organic Modern Bedroom",
+                    title: {
+                        ru: "Спальня Органик модерн",
+                        en: "Organic Modern Bedroom",
+                    },
                     url: "https://www.behance.net/gallery/233352841/Organic-Modern-Bedroom",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/009b0e233352841.68adf043abc47.jpg",
@@ -1705,14 +2077,17 @@
                     ],
                 },
                 {
-                    title: "Clubroom",
+                    title: { ru: "Клубная комната", en: "Clubroom" },
                     url: "https://www.behance.net/gallery/233336943/Clubroom",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/daa101233336943.68adbc622c96b.jpg",
                     ],
                 },
                 {
-                    title: "Boutique in Manhattan",
+                    title: {
+                        ru: "Бутик на Манхэттене",
+                        en: "Boutique in Manhattan",
+                    },
                     url: "https://www.behance.net/gallery/233340527/Boutique-in-Manhattan",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/160e24233340527.68adc75e4d5eb.jpg",
@@ -1721,7 +2096,10 @@
                     ],
                 },
                 {
-                    title: "Loft Bathroom Interior",
+                    title: {
+                        ru: "Ванная в стиле лофт",
+                        en: "Loft Bathroom Interior",
+                    },
                     url: "https://www.behance.net/gallery/222867617/Loft-Bathroom-Interior",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/9f5c35222867617.67ee71291e728.jpg",
@@ -1729,7 +2107,10 @@
                     ],
                 },
                 {
-                    title: "Neoclassical Master Bedroom",
+                    title: {
+                        ru: "Неоклассическая спальня",
+                        en: "Neoclassical Master Bedroom",
+                    },
                     url: "https://www.behance.net/gallery/222754913/somfortable-master-bedroom-in-the-neoclassical-style",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/467c4a222754913.67ec63cfa4796.jpg",
@@ -1737,7 +2118,10 @@
                     ],
                 },
                 {
-                    title: "Classic Chelsea Studio",
+                    title: {
+                        ru: "Студия в Челси",
+                        en: "Classic Chelsea Studio",
+                    },
                     url: "https://www.behance.net/gallery/222737543/Studio-in-classic-pre-war-Chelsea-building",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/03fc30222737543.67ec1c8288942.jpg",
@@ -1748,7 +2132,10 @@
                     ],
                 },
                 {
-                    title: "Luxury Living Room, Manhattan",
+                    title: {
+                        ru: "Роскошная гостиная, Манхэттен",
+                        en: "Luxury Living Room, Manhattan",
+                    },
                     url: "https://www.behance.net/gallery/222739837/Luxury-living-room-in-Residence-of-Manhattan",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/0c71ec222739837.67ec24a1c5be1.jpg",
@@ -1760,7 +2147,10 @@
                     ],
                 },
                 {
-                    title: "Minimalist Apartment, New York",
+                    title: {
+                        ru: "Минималистичная квартира, Нью-Йорк",
+                        en: "Minimalist Apartment, New York",
+                    },
                     url: "https://www.behance.net/gallery/222754129/Minimalistic-apartment-in-New-York",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/48cf16222754129.67ec5f9d8db83.jpg",
@@ -1771,7 +2161,10 @@
                     ],
                 },
                 {
-                    title: "Stylish Living Room",
+                    title: {
+                        ru: "Стильная гостиная",
+                        en: "Stylish Living Room",
+                    },
                     url: "https://www.behance.net/gallery/222755487/Stylish-living-room",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/09e038222755487.67ec673995ae7.jpg",
@@ -1779,14 +2172,17 @@
                     ],
                 },
                 {
-                    title: "Home Gym",
+                    title: { ru: "Домашний спортзал", en: "Home Gym" },
                     url: "https://www.behance.net/gallery/233341809/Home-Gym",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/a0baf9233341809.68adcb5f3d52f.jpg",
                     ],
                 },
                 {
-                    title: "Living & Dining Area, North York",
+                    title: {
+                        ru: "Гостиная-столовая, Норт-Йорк",
+                        en: "Living & Dining Area, North York",
+                    },
                     url: "https://www.behance.net/gallery/233345317/Living-Dining-Area-in-North-Yourk-Canada",
                     images: [
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/047cc4233345317.68add6df3956f.jpg",
@@ -1799,6 +2195,30 @@
                 },
             ];
 
+            let currentLang = "ru";
+            let currentProject = null;
+            let currentSlide = 0;
+
+            // LANG SWITCH
+            function setLang(lang) {
+                currentLang = lang;
+                document.querySelectorAll(".lang-btn").forEach((b) => {
+                    b.classList.toggle("active", b.dataset.lang === lang);
+                });
+                document
+                    .querySelectorAll("[data-ru][data-en]")
+                    .forEach((el) => {
+                        const val = el.getAttribute("data-" + lang);
+                        if (val) el.innerHTML = val;
+                    });
+                // Update lightbox title if open
+                if (currentProject !== null) {
+                    const p = projects[currentProject];
+                    document.getElementById("lightboxTitle").textContent =
+                        p.title[lang];
+                }
+            }
+
             // LOADER
             window.addEventListener("load", () => {
                 setTimeout(() => {
@@ -1807,12 +2227,10 @@
             });
 
             // NAV SCROLL
-            const nav = document.getElementById("nav");
-            let lastScroll = 0;
             window.addEventListener("scroll", () => {
-                const st = window.scrollY;
-                nav.classList.toggle("scrolled", st > 80);
-                lastScroll = st;
+                document
+                    .getElementById("nav")
+                    .classList.toggle("scrolled", window.scrollY > 80);
             });
 
             // MOBILE MENU
@@ -1846,82 +2264,72 @@
                         .querySelectorAll(".filter-btn")
                         .forEach((b) => b.classList.remove("active"));
                     btn.classList.add("active");
-                    const filter = btn.dataset.filter;
-                    document
-                        .querySelectorAll(".project-card")
-                        .forEach((card) => {
-                            if (
-                                filter === "all" ||
-                                card.dataset.category === filter
-                            ) {
-                                card.style.display = "";
-                            } else {
-                                card.style.display = "none";
-                            }
-                        });
+                    const f = btn.dataset.filter;
+                    document.querySelectorAll(".project-card").forEach((c) => {
+                        c.style.display =
+                            f === "all" || c.dataset.category === f
+                                ? ""
+                                : "none";
+                    });
                 });
             });
 
             // LIGHTBOX
-            let currentProject = null;
-            let currentSlide = 0;
-
             document.querySelectorAll(".project-card").forEach((card) => {
-                card.addEventListener("click", () => {
-                    const idx = parseInt(card.dataset.project);
-                    openLightbox(idx);
-                });
+                card.addEventListener("click", () =>
+                    openLightbox(parseInt(card.dataset.project)),
+                );
             });
-
             function openLightbox(idx) {
                 currentProject = idx;
                 currentSlide = 0;
                 const p = projects[idx];
-                document.getElementById("lightboxTitle").textContent = p.title;
+                document.getElementById("lightboxTitle").textContent =
+                    p.title[currentLang];
                 document.getElementById("lightboxLink").href = p.url;
-                const container = document.getElementById("lightboxImages");
-                container.innerHTML = p.images
+                document.getElementById("lightboxImages").innerHTML = p.images
                     .map(
                         (img) =>
-                            `<div class="lightbox-slide"><img src="${img}" alt="${p.title}" loading="lazy"></div>`,
+                            '<div class="lightbox-slide"><img src="' +
+                            img +
+                            '" alt="' +
+                            p.title[currentLang] +
+                            '" loading="lazy"></div>',
                     )
                     .join("");
-                container.style.transform = "translateX(0)";
+                document.getElementById("lightboxImages").style.transform =
+                    "translateX(0)";
                 updateCounter();
                 document.getElementById("lightbox").classList.add("open");
                 document.body.style.overflow = "hidden";
             }
-
             function closeLightbox() {
                 document.getElementById("lightbox").classList.remove("open");
                 document.body.style.overflow = "";
             }
-
             function nextSlide() {
-                if (!currentProject && currentProject !== 0) return;
-                const total = projects[currentProject].images.length;
-                currentSlide = (currentSlide + 1) % total;
+                if (currentProject === null) return;
+                const t = projects[currentProject].images.length;
+                currentSlide = (currentSlide + 1) % t;
                 document.getElementById("lightboxImages").style.transform =
-                    `translateX(-${currentSlide * 100}%)`;
+                    "translateX(-" + currentSlide * 100 + "%)";
                 updateCounter();
             }
-
             function prevSlide() {
-                if (!currentProject && currentProject !== 0) return;
-                const total = projects[currentProject].images.length;
-                currentSlide = (currentSlide - 1 + total) % total;
+                if (currentProject === null) return;
+                const t = projects[currentProject].images.length;
+                currentSlide = (currentSlide - 1 + t) % t;
                 document.getElementById("lightboxImages").style.transform =
-                    `translateX(-${currentSlide * 100}%)`;
+                    "translateX(-" + currentSlide * 100 + "%)";
                 updateCounter();
             }
-
             function updateCounter() {
-                const total = projects[currentProject].images.length;
                 document.getElementById("lightboxCounter").textContent =
-                    `${currentSlide + 1} / ${total}`;
+                    currentSlide +
+                    1 +
+                    " / " +
+                    projects[currentProject].images.length;
             }
-
-            // KEYBOARD NAV FOR LIGHTBOX
             document.addEventListener("keydown", (e) => {
                 if (
                     !document
@@ -1934,15 +2342,13 @@
                 if (e.key === "ArrowLeft") prevSlide();
             });
 
-            // SMOOTH SCROLL FOR ANCHOR LINKS
+            // SMOOTH SCROLL
             document.querySelectorAll('a[href^="#"]').forEach((a) => {
                 a.addEventListener("click", (e) => {
-                    const target = document.querySelector(
-                        a.getAttribute("href"),
-                    );
-                    if (target) {
+                    const t = document.querySelector(a.getAttribute("href"));
+                    if (t) {
                         e.preventDefault();
-                        target.scrollIntoView({
+                        t.scrollIntoView({
                             behavior: "smooth",
                             block: "start",
                         });
