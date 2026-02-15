@@ -155,8 +155,9 @@
                 font-size: 0.75rem;
                 letter-spacing: 0.15em;
                 text-transform: uppercase;
-                color: var(--text2);
+                color: var(--text);
                 transition: color 0.3s;
+                text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
             }
             .nav-links a:hover {
                 color: var(--gold);
@@ -314,8 +315,9 @@
                     to top,
                     rgba(10, 10, 10, 0.95) 0%,
                     rgba(10, 10, 10, 0.5) 35%,
-                    rgba(10, 10, 10, 0.2) 60%,
-                    rgba(10, 10, 10, 0.35) 100%
+                    rgba(10, 10, 10, 0.15) 55%,
+                    rgba(10, 10, 10, 0.55) 80%,
+                    rgba(10, 10, 10, 0.75) 100%
                 );
             }
             .hero-content {
@@ -325,7 +327,8 @@
                 max-width: 900px;
             }
             .hero-tag {
-                font-size: 0.7rem;
+                display: inline-block;
+                font-size: 0.75rem;
                 letter-spacing: 0.3em;
                 text-transform: uppercase;
                 color: var(--gold);
@@ -333,6 +336,9 @@
                 opacity: 0;
                 transform: translateY(20px);
                 transition: all 1s var(--ease-out) 0.3s;
+                background: rgba(10, 10, 10, 0.5);
+                padding: 0.5rem 1rem;
+                border-left: 2px solid var(--gold);
             }
             .hero h1 {
                 font-family: var(--serif);
@@ -1396,7 +1402,7 @@
             </div>
             <div class="portfolio-grid" id="portfolioGrid">
                 <div
-                    class="project-card wide reveal"
+                    class="project-card reveal"
                     data-category="bathroom"
                     data-project="0"
                 >
@@ -1535,7 +1541,7 @@
                 </div>
 
                 <div
-                    class="project-card wide reveal reveal-delay-1"
+                    class="project-card reveal reveal-delay-1"
                     data-category="commercial"
                     data-project="3"
                 >
@@ -1707,7 +1713,7 @@
                 </div>
 
                 <div
-                    class="project-card wide reveal"
+                    class="project-card reveal"
                     data-category="residential"
                     data-project="11"
                 >
