@@ -1,58 +1,1954 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Портфолио Виктории Стрелковой — 5 вариантов</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
-h1{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:300;text-align:center;margin-bottom:.5rem}
-h1 span{font-weight:700}
-p.sub{color:#888;font-size:.9rem;margin-bottom:3rem;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;width:100%;max-width:900px}
-.card{padding:2rem;border:1px solid rgba(255,255,255,.1);border-radius:12px;text-decoration:none;color:#fff;transition:all .3s;position:relative;overflow:hidden}
-.card:hover{border-color:rgba(255,255,255,.3);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
-.card .num{font-size:3rem;font-weight:700;opacity:.1;position:absolute;top:.5rem;right:1rem}
-.card h2{font-size:1.1rem;font-weight:600;margin-bottom:.3rem}
-.card p{font-size:.8rem;color:#888;line-height:1.5}
-.card:nth-child(1){background:linear-gradient(135deg,rgba(201,169,110,.15),transparent)}
-.card:nth-child(2){background:linear-gradient(135deg,rgba(212,165,165,.15),transparent)}
-.card:nth-child(3){background:linear-gradient(135deg,rgba(255,107,53,.15),transparent)}
-.card:nth-child(4){background:linear-gradient(135deg,rgba(255,214,10,.15),transparent)}
-.card:nth-child(5){background:linear-gradient(135deg,rgba(0,212,255,.15),transparent)}
-</style>
-</head>
-<body>
-<h1>Портфолио <span>Виктории Стрелковой</span></h1>
-<p class="sub">5 вариантов дизайна — выбери свой</p>
-<div class="grid">
-  <a href="portfolio-1-dark-elegance.html" class="card">
-    <span class="num">01</span>
-    <h2>Dark Elegance</h2>
-    <p>Тёмный фон, золотые акценты, кинематографический стиль премиум архитектурной студии</p>
-  </a>
-  <a href="portfolio-2-clean-airy.html" class="card">
-    <span class="num">02</span>
-    <h2>Clean & Airy</h2>
-    <p>Светлый, воздушный дизайн с розовыми акцентами, как журнал по дизайну интерьеров</p>
-  </a>
-  <a href="portfolio-3-creative-motion.html" class="card">
-    <span class="num">03</span>
-    <h2>Creative Motion</h2>
-    <p>Крупная типографика, асимметричная вёрстка, коралловые акценты, стиль Awwwards</p>
-  </a>
-  <a href="portfolio-4-neo-brutalism.html" class="card">
-    <span class="num">04</span>
-    <h2>Neo Brutalism</h2>
-    <p>Модный необрутализм — жирные рамки, тени, яркие плашки жёлтого, синего и розового</p>
-  </a>
-  <a href="portfolio-5-glass-glow.html" class="card">
-    <span class="num">05</span>
-    <h2>Glass & Glow</h2>
-    <p>Glassmorphism с матовым стеклом, неоновыми свечениями и анимированным фоном</p>
-  </a>
-</div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Victoria Strelkova — CGI Artist & Interior Designer</title>
+        <meta
+            name="description"
+            content="Victoria Strelkova — CGI artist and interior designer specializing in photorealistic 3D visualization. Transforming ideas into stunning visual experiences."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            :root {
+                --bg: #0a0a0a;
+                --bg2: #111;
+                --bg3: #1a1a1a;
+                --text: #f5f0eb;
+                --text2: #a09890;
+                --text3: #6b6560;
+                --gold: #c9a96e;
+                --gold2: #b8944f;
+                --gold-glow: rgba(201, 169, 110, 0.15);
+                --serif: "Cormorant Garamond", Georgia, serif;
+                --sans: "Inter", system-ui, sans-serif;
+                --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            html {
+                scroll-behavior: smooth;
+                scrollbar-width: thin;
+                scrollbar-color: var(--gold) var(--bg);
+            }
+            body {
+                font-family: var(--sans);
+                background: var(--bg);
+                color: var(--text);
+                line-height: 1.6;
+                overflow-x: hidden;
+                -webkit-font-smoothing: antialiased;
+            }
+            ::selection {
+                background: var(--gold);
+                color: var(--bg);
+            }
+            img {
+                display: block;
+                max-width: 100%;
+            }
+            a {
+                color: var(--gold);
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            a:hover {
+                color: var(--text);
+            }
+
+            /* LOADER */
+            .loader {
+                position: fixed;
+                inset: 0;
+                background: var(--bg);
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition:
+                    opacity 0.8s var(--ease),
+                    visibility 0.8s;
+            }
+            .loader.hidden {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+            .loader-line {
+                width: 60px;
+                height: 1px;
+                background: var(--text3);
+                position: relative;
+                overflow: hidden;
+            }
+            .loader-line::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 40%;
+                background: var(--gold);
+                animation: loaderSlide 1s var(--ease) infinite;
+            }
+            @keyframes loaderSlide {
+                0% {
+                    left: -40%;
+                }
+                100% {
+                    left: 100%;
+                }
+            }
+
+            /* NAV */
+            .nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                padding: 1.5rem 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: all 0.5s var(--ease);
+            }
+            .nav.scrolled {
+                background: rgba(10, 10, 10, 0.92);
+                backdrop-filter: blur(20px);
+                padding: 1rem 3rem;
+                border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+            }
+            .nav-logo {
+                font-family: var(--serif);
+                font-size: 1.3rem;
+                font-weight: 400;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--text);
+            }
+            .nav-logo span {
+                color: var(--gold);
+            }
+            .nav-links {
+                display: flex;
+                gap: 2.5rem;
+                align-items: center;
+            }
+            .nav-links a {
+                font-size: 0.75rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--text2);
+                transition: color 0.3s;
+            }
+            .nav-links a:hover {
+                color: var(--gold);
+            }
+            .nav-cta {
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                padding: 0.7rem 1.8rem;
+                border: 1px solid var(--gold);
+                color: var(--gold);
+                background: transparent;
+                cursor: pointer;
+                transition: all 0.4s var(--ease);
+                font-family: var(--sans);
+            }
+            .nav-cta:hover {
+                background: var(--gold);
+                color: var(--bg);
+            }
+            .nav-burger {
+                display: none;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                padding: 5px;
+            }
+            .nav-burger span {
+                width: 24px;
+                height: 1px;
+                background: var(--text);
+                transition: all 0.3s;
+            }
+
+            /* MOBILE MENU */
+            .mobile-menu {
+                position: fixed;
+                inset: 0;
+                background: rgba(10, 10, 10, 0.98);
+                z-index: 99;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.5s var(--ease);
+            }
+            .mobile-menu.open {
+                opacity: 1;
+                visibility: visible;
+            }
+            .mobile-menu a {
+                font-family: var(--serif);
+                font-size: 2rem;
+                color: var(--text);
+                letter-spacing: 0.05em;
+            }
+            .mobile-menu-close {
+                position: absolute;
+                top: 1.5rem;
+                right: 2rem;
+                font-size: 2rem;
+                color: var(--text);
+                cursor: pointer;
+                background: none;
+                border: none;
+            }
+
+            /* HERO */
+            .hero {
+                position: relative;
+                height: 100vh;
+                min-height: 600px;
+                display: flex;
+                align-items: flex-end;
+                overflow: hidden;
+            }
+            .hero-bg {
+                position: absolute;
+                inset: 0;
+            }
+            .hero-bg img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transform: scale(1.05);
+                transition: transform 8s var(--ease);
+            }
+            .hero.visible .hero-bg img {
+                transform: scale(1);
+            }
+            .hero-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    to top,
+                    rgba(10, 10, 10, 0.95) 0%,
+                    rgba(10, 10, 10, 0.4) 40%,
+                    rgba(10, 10, 10, 0.2) 70%,
+                    rgba(10, 10, 10, 0.3) 100%
+                );
+            }
+            .hero-content {
+                position: relative;
+                z-index: 2;
+                padding: 0 3rem 5rem;
+                max-width: 900px;
+            }
+            .hero-tag {
+                font-size: 0.7rem;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 1.5rem;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 1s var(--ease-out) 0.3s;
+            }
+            .hero h1 {
+                font-family: var(--serif);
+                font-size: clamp(2.5rem, 6vw, 5rem);
+                font-weight: 300;
+                line-height: 1.1;
+                letter-spacing: 0.02em;
+                margin-bottom: 1rem;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 1.2s var(--ease-out) 0.5s;
+            }
+            .hero h1 em {
+                font-style: italic;
+                color: var(--gold);
+            }
+            .hero-sub {
+                font-size: 1rem;
+                color: var(--text2);
+                font-weight: 300;
+                max-width: 500px;
+                line-height: 1.7;
+                margin-bottom: 2.5rem;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 1s var(--ease-out) 0.8s;
+            }
+            .hero-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.8rem;
+                font-size: 0.75rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--gold);
+                border: 1px solid rgba(201, 169, 110, 0.4);
+                padding: 1rem 2.5rem;
+                transition: all 0.5s var(--ease);
+                opacity: 0;
+                transform: translateY(20px);
+                transition:
+                    all 1s var(--ease-out) 1s,
+                    background 0.4s,
+                    border-color 0.4s;
+            }
+            .hero-btn:hover {
+                background: var(--gold);
+                color: var(--bg);
+                border-color: var(--gold);
+            }
+            .hero-btn svg {
+                width: 16px;
+                height: 16px;
+                transition: transform 0.3s;
+            }
+            .hero-btn:hover svg {
+                transform: translateX(4px);
+            }
+            .hero.visible .hero-tag,
+            .hero.visible h1,
+            .hero.visible .hero-sub,
+            .hero.visible .hero-btn {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .hero-scroll {
+                position: absolute;
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                z-index: 2;
+            }
+            .hero-scroll span {
+                font-size: 0.6rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--text3);
+            }
+            .hero-scroll-line {
+                width: 1px;
+                height: 40px;
+                background: var(--text3);
+                position: relative;
+                overflow: hidden;
+            }
+            .hero-scroll-line::after {
+                content: "";
+                position: absolute;
+                top: -100%;
+                left: 0;
+                width: 100%;
+                height: 50%;
+                background: var(--gold);
+                animation: scrollLine 2s var(--ease) infinite;
+            }
+            @keyframes scrollLine {
+                0% {
+                    top: -50%;
+                }
+                100% {
+                    top: 150%;
+                }
+            }
+
+            /* SECTION COMMON */
+            section {
+                padding: 8rem 3rem;
+            }
+            .section-tag {
+                font-size: 0.65rem;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 1rem;
+            }
+            .section-title {
+                font-family: var(--serif);
+                font-size: clamp(2rem, 4vw, 3.2rem);
+                font-weight: 300;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+            .section-desc {
+                color: var(--text2);
+                max-width: 600px;
+                font-weight: 300;
+                line-height: 1.8;
+                font-size: 0.95rem;
+            }
+
+            /* REVEAL ANIMATION */
+            .reveal {
+                opacity: 0;
+                transform: translateY(40px);
+                transition:
+                    opacity 0.8s var(--ease-out),
+                    transform 0.8s var(--ease-out);
+            }
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .reveal-delay-1 {
+                transition-delay: 0.1s;
+            }
+            .reveal-delay-2 {
+                transition-delay: 0.2s;
+            }
+            .reveal-delay-3 {
+                transition-delay: 0.3s;
+            }
+            .reveal-delay-4 {
+                transition-delay: 0.4s;
+            }
+
+            /* ABOUT */
+            .about {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5rem;
+                align-items: center;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+            .about-image {
+                position: relative;
+                overflow: hidden;
+                aspect-ratio: 3/4;
+            }
+            .about-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.8s var(--ease);
+            }
+            .about-image:hover img {
+                transform: scale(1.03);
+            }
+            .about-image::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border: 1px solid rgba(201, 169, 110, 0.2);
+                pointer-events: none;
+            }
+            .about-text .section-tag {
+                margin-bottom: 1.5rem;
+            }
+            .about-stats {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                margin-top: 3rem;
+                padding-top: 3rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .stat-num {
+                font-family: var(--serif);
+                font-size: 2.5rem;
+                font-weight: 300;
+                color: var(--gold);
+                line-height: 1;
+            }
+            .stat-label {
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--text3);
+                margin-top: 0.5rem;
+            }
+            .about-tools {
+                display: flex;
+                gap: 1.5rem;
+                margin-top: 2rem;
+                flex-wrap: wrap;
+            }
+            .about-tools span {
+                font-size: 0.7rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--text3);
+                padding: 0.5rem 1rem;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 2px;
+            }
+
+            /* SERVICES */
+            .services-section {
+                background: var(--bg2);
+            }
+            .services-header {
+                text-align: center;
+                max-width: 700px;
+                margin: 0 auto 4rem;
+            }
+            .services-header .section-desc {
+                margin: 0 auto;
+            }
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .service-card {
+                padding: 3rem 2.5rem;
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                transition: all 0.5s var(--ease);
+                position: relative;
+                overflow: hidden;
+            }
+            .service-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: var(--gold);
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.5s var(--ease);
+            }
+            .service-card:hover::before {
+                transform: scaleX(1);
+            }
+            .service-card:hover {
+                border-color: rgba(201, 169, 110, 0.2);
+                background: rgba(201, 169, 110, 0.03);
+            }
+            .service-icon {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+                opacity: 0.8;
+            }
+            .service-card h3 {
+                font-family: var(--serif);
+                font-size: 1.5rem;
+                font-weight: 400;
+                margin-bottom: 1rem;
+            }
+            .service-card p {
+                color: var(--text2);
+                font-size: 0.9rem;
+                line-height: 1.7;
+                font-weight: 300;
+            }
+
+            /* PORTFOLIO */
+            .portfolio-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                max-width: 1400px;
+                margin: 0 auto 3rem;
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+            .portfolio-filters {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            .filter-btn {
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                padding: 0.6rem 1.2rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background: transparent;
+                color: var(--text3);
+                cursor: pointer;
+                transition: all 0.3s;
+                font-family: var(--sans);
+            }
+            .filter-btn.active,
+            .filter-btn:hover {
+                border-color: var(--gold);
+                color: var(--gold);
+                background: var(--gold-glow);
+            }
+            .portfolio-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+            .project-card {
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                aspect-ratio: 4/3;
+                background: var(--bg3);
+            }
+            .project-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition:
+                    transform 0.8s var(--ease),
+                    filter 0.5s;
+            }
+            .project-card:hover img {
+                transform: scale(1.05);
+                filter: brightness(0.7);
+            }
+            .project-info {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 2rem;
+                opacity: 0;
+                transition: opacity 0.5s var(--ease);
+                background: linear-gradient(
+                    to top,
+                    rgba(10, 10, 10, 0.9) 0%,
+                    transparent 60%
+                );
+            }
+            .project-card:hover .project-info {
+                opacity: 1;
+            }
+            .project-info h3 {
+                font-family: var(--serif);
+                font-size: 1.4rem;
+                font-weight: 400;
+                margin-bottom: 0.3rem;
+            }
+            .project-info .project-cat {
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--gold);
+            }
+            .project-info .project-desc {
+                font-size: 0.85rem;
+                color: var(--text2);
+                margin-top: 0.5rem;
+                line-height: 1.5;
+                font-weight: 300;
+            }
+            .project-card.wide {
+                grid-column: span 2;
+            }
+            .project-card.tall {
+                grid-row: span 2;
+                aspect-ratio: auto;
+            }
+
+            /* LIGHTBOX */
+            .lightbox {
+                position: fixed;
+                inset: 0;
+                background: rgba(10, 10, 10, 0.97);
+                z-index: 200;
+                display: flex;
+                flex-direction: column;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.5s var(--ease);
+            }
+            .lightbox.open {
+                opacity: 1;
+                visibility: visible;
+            }
+            .lightbox-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1.5rem 3rem;
+                flex-shrink: 0;
+            }
+            .lightbox-title {
+                font-family: var(--serif);
+                font-size: 1.5rem;
+                font-weight: 400;
+            }
+            .lightbox-close {
+                width: 40px;
+                height: 40px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                background: none;
+                color: var(--text);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                transition: all 0.3s;
+            }
+            .lightbox-close:hover {
+                border-color: var(--gold);
+                color: var(--gold);
+            }
+            .lightbox-body {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                position: relative;
+            }
+            .lightbox-images {
+                display: flex;
+                transition: transform 0.5s var(--ease-out);
+                height: 100%;
+                width: 100%;
+            }
+            .lightbox-slide {
+                min-width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+            }
+            .lightbox-slide img {
+                max-width: 100%;
+                max-height: 80vh;
+                object-fit: contain;
+            }
+            .lightbox-nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 50px;
+                height: 50px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                background: rgba(10, 10, 10, 0.8);
+                color: var(--text);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                transition: all 0.3s;
+                z-index: 5;
+            }
+            .lightbox-nav:hover {
+                border-color: var(--gold);
+                color: var(--gold);
+            }
+            .lightbox-prev {
+                left: 1rem;
+            }
+            .lightbox-next {
+                right: 1rem;
+            }
+            .lightbox-footer {
+                padding: 1rem 3rem;
+                text-align: center;
+                flex-shrink: 0;
+            }
+            .lightbox-counter {
+                font-size: 0.75rem;
+                color: var(--text3);
+                letter-spacing: 0.1em;
+            }
+            .lightbox-link {
+                font-size: 0.75rem;
+                color: var(--gold);
+                margin-left: 2rem;
+                letter-spacing: 0.1em;
+            }
+
+            /* PROCESS */
+            .process-section {
+                background: var(--bg2);
+            }
+            .process-header {
+                text-align: center;
+                max-width: 700px;
+                margin: 0 auto 5rem;
+            }
+            .process-header .section-desc {
+                margin: 0 auto;
+            }
+            .process-timeline {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0;
+                max-width: 1100px;
+                margin: 0 auto;
+                position: relative;
+            }
+            .process-timeline::before {
+                content: "";
+                position: absolute;
+                top: 2rem;
+                left: 10%;
+                right: 10%;
+                height: 1px;
+                background: rgba(255, 255, 255, 0.08);
+            }
+            .process-step {
+                text-align: center;
+                padding: 0 1.5rem;
+                position: relative;
+            }
+            .step-num {
+                width: 4rem;
+                height: 4rem;
+                border: 1px solid var(--gold);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 2rem;
+                font-family: var(--serif);
+                font-size: 1.3rem;
+                color: var(--gold);
+                background: var(--bg2);
+                position: relative;
+                z-index: 2;
+                transition: all 0.5s var(--ease);
+            }
+            .process-step:hover .step-num {
+                background: var(--gold);
+                color: var(--bg);
+            }
+            .process-step h3 {
+                font-family: var(--serif);
+                font-size: 1.2rem;
+                font-weight: 400;
+                margin-bottom: 0.8rem;
+            }
+            .process-step p {
+                font-size: 0.85rem;
+                color: var(--text2);
+                line-height: 1.6;
+                font-weight: 300;
+            }
+
+            /* CONTACT */
+            .contact-section {
+                position: relative;
+                overflow: hidden;
+            }
+            .contact-bg {
+                position: absolute;
+                inset: 0;
+                opacity: 0.15;
+            }
+            .contact-bg img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .contact-content {
+                position: relative;
+                z-index: 2;
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .contact-content .section-title {
+                font-size: clamp(2rem, 5vw, 3.5rem);
+            }
+            .contact-content .section-desc {
+                margin: 0 auto 3rem;
+                max-width: 500px;
+            }
+            .contact-links {
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                flex-wrap: wrap;
+                margin-bottom: 3rem;
+            }
+            .contact-link {
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                padding: 1rem 2rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transition: all 0.4s var(--ease);
+                font-size: 0.85rem;
+            }
+            .contact-link:hover {
+                border-color: var(--gold);
+                background: var(--gold-glow);
+            }
+            .contact-link svg {
+                width: 18px;
+                height: 18px;
+                color: var(--gold);
+            }
+            .contact-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.8rem;
+                font-size: 0.8rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--bg);
+                background: var(--gold);
+                padding: 1.2rem 3rem;
+                border: none;
+                cursor: pointer;
+                transition: all 0.4s var(--ease);
+                font-family: var(--sans);
+            }
+            .contact-btn:hover {
+                background: var(--gold2);
+                transform: translateY(-2px);
+                box-shadow: 0 10px 30px rgba(201, 169, 110, 0.2);
+            }
+
+            /* FOOTER */
+            .footer {
+                padding: 3rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 0.75rem;
+                color: var(--text3);
+            }
+            .footer-social {
+                display: flex;
+                gap: 1.5rem;
+            }
+            .footer-social a {
+                color: var(--text3);
+                transition: color 0.3s;
+            }
+            .footer-social a:hover {
+                color: var(--gold);
+            }
+
+            /* RESPONSIVE */
+            @media (max-width: 1024px) {
+                .portfolio-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                .project-card.wide {
+                    grid-column: span 1;
+                }
+                .services-grid {
+                    grid-template-columns: 1fr;
+                }
+                .process-timeline {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 3rem;
+                }
+                .process-timeline::before {
+                    display: none;
+                }
+                .about {
+                    grid-template-columns: 1fr;
+                    gap: 3rem;
+                }
+            }
+            @media (max-width: 768px) {
+                section {
+                    padding: 5rem 1.5rem;
+                }
+                .nav {
+                    padding: 1rem 1.5rem;
+                }
+                .nav-links {
+                    display: none;
+                }
+                .nav-burger {
+                    display: flex;
+                }
+                .hero-content {
+                    padding: 0 1.5rem 4rem;
+                }
+                .portfolio-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1rem;
+                }
+                .about-stats {
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 1rem;
+                }
+                .process-timeline {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                }
+                .contact-links {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .footer {
+                    flex-direction: column;
+                    gap: 1.5rem;
+                    text-align: center;
+                }
+                .lightbox-header {
+                    padding: 1rem 1.5rem;
+                }
+                .lightbox-slide {
+                    padding: 1rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- LOADER -->
+        <div class="loader"><div class="loader-line"></div></div>
+
+        <!-- MOBILE MENU -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="mobile-menu-close" onclick="closeMobile()">
+                &times;
+            </button>
+            <a href="#about" onclick="closeMobile()">About</a>
+            <a href="#services" onclick="closeMobile()">Services</a>
+            <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+            <a href="#process" onclick="closeMobile()">Process</a>
+            <a href="#contact" onclick="closeMobile()">Contact</a>
+        </div>
+
+        <!-- NAV -->
+        <nav class="nav" id="nav">
+            <a href="#" class="nav-logo">Victoria <span>Strelkova</span></a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#process">Process</a>
+                <a href="#contact" class="nav-cta">Get in Touch</a>
+            </div>
+            <div class="nav-burger" onclick="openMobile()">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <img
+                    src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/720779234669147.68c837142ba57.jpg"
+                    alt="Elegant Art-Deco Bathroom by Victoria Strelkova"
+                    loading="eager"
+                />
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-tag">CGI Artist & Interior Designer</div>
+                <h1>Crafting Spaces That <em>Inspire</em></h1>
+                <p class="hero-sub">
+                    Photorealistic 3D visualization and interior design. I bring
+                    your vision to life before a single wall is built.
+                </p>
+                <a href="#contact" class="hero-btn">
+                    Discuss Your Project
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="hero-scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" style="padding: 8rem 3rem">
+            <div class="about">
+                <div class="about-image reveal">
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/467c4a222754913.67ec63cfa4796.jpg"
+                        alt="Neoclassical Bedroom Design"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="about-text">
+                    <div class="section-tag reveal">About Me</div>
+                    <h2 class="section-title reveal reveal-delay-1">
+                        Victoria Strelkova
+                    </h2>
+                    <p class="section-desc reveal reveal-delay-2">
+                        I'm a CGI artist and interior designer with over 6 years
+                        of experience creating photorealistic visualizations
+                        that help clients see their dream spaces before
+                        construction begins. My work spans from luxury
+                        residences in Manhattan to contemporary apartments in
+                        Toronto, blending artistry with technical precision.
+                    </p>
+                    <p
+                        class="section-desc reveal reveal-delay-3"
+                        style="margin-top: 1rem"
+                    >
+                        Every render I create tells a story of light, texture,
+                        and atmosphere. I believe great design isn't just about
+                        aesthetics — it's about creating environments that
+                        resonate with the people who inhabit them.
+                    </p>
+                    <div class="about-stats reveal reveal-delay-3">
+                        <div>
+                            <div class="stat-num">6+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div>
+                            <div class="stat-num">50+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div>
+                            <div class="stat-num">12</div>
+                            <div class="stat-label">Cities Worldwide</div>
+                        </div>
+                    </div>
+                    <div class="about-tools reveal reveal-delay-4">
+                        <span>3ds Max</span><span>Corona Renderer</span
+                        ><span>Photoshop</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services-section" id="services">
+            <div class="services-header">
+                <div class="section-tag reveal">Services</div>
+                <h2 class="section-title reveal reveal-delay-1">What I Do</h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    From initial concept to final render, I provide end-to-end
+                    visualization services that bring architectural visions to
+                    life.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">&#9632;</div>
+                    <h3>3D Visualization</h3>
+                    <p>
+                        Photorealistic renders that capture every detail — from
+                        the play of natural light on marble surfaces to the
+                        texture of handwoven fabrics. Perfect for presentations,
+                        marketing, and design approval.
+                    </p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">&#9670;</div>
+                    <h3>Interior Design</h3>
+                    <p>
+                        Complete interior design concepts from mood boards to
+                        material palettes. I create cohesive spaces that balance
+                        beauty with functionality, tailored to each client's
+                        lifestyle and vision.
+                    </p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">&#9688;</div>
+                    <h3>Commercial Spaces</h3>
+                    <p>
+                        Boutiques, clubrooms, gyms, and commercial interiors
+                        designed to elevate your brand and create memorable
+                        experiences for your customers and guests.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section id="portfolio">
+            <div class="portfolio-header">
+                <div>
+                    <div class="section-tag reveal">Portfolio</div>
+                    <h2 class="section-title reveal reveal-delay-1">
+                        Selected Works
+                    </h2>
+                </div>
+                <div class="portfolio-filters reveal reveal-delay-2">
+                    <button class="filter-btn active" data-filter="all">
+                        All
+                    </button>
+                    <button class="filter-btn" data-filter="residential">
+                        Residential
+                    </button>
+                    <button class="filter-btn" data-filter="commercial">
+                        Commercial
+                    </button>
+                    <button class="filter-btn" data-filter="bathroom">
+                        Bathroom
+                    </button>
+                </div>
+            </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- 1. Elegant Art-Deco Bathroom -->
+                <div
+                    class="project-card wide reveal"
+                    data-category="bathroom"
+                    data-project="0"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/720779234669147.68c837142ba57.jpg"
+                        alt="Elegant Art-Deco Bathroom"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat"
+                            >Bathroom &middot; Art Deco</span
+                        >
+                        <h3>Elegant Art-Deco Bathroom</h3>
+                        <p class="project-desc">
+                            A luxurious bathroom where Art Deco grandeur meets
+                            modern comfort. Rich marble, gilded accents, and
+                            dramatic lighting create a space that feels like a
+                            private spa in a 1920s palace.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. Organic Modern Bedroom -->
+                <div
+                    class="project-card reveal reveal-delay-1"
+                    data-category="residential"
+                    data-project="1"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/009b0e233352841.68adf043abc47.jpg"
+                        alt="Organic Modern Bedroom"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat"
+                            >Bedroom &middot; Organic Modern</span
+                        >
+                        <h3>Organic Modern Bedroom</h3>
+                        <p class="project-desc">
+                            Warm earth tones and natural textures create a
+                            serene retreat. Curved forms and soft lighting blur
+                            the line between nature and interior.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. Luxury Living Room Manhattan -->
+                <div
+                    class="project-card reveal reveal-delay-2"
+                    data-category="residential"
+                    data-project="7"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/5f2415222739837.67ec24a1c3a0f.jpg"
+                        alt="Luxury Living Room Manhattan"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat"
+                            >Living Room &middot; Luxury</span
+                        >
+                        <h3>Luxury Living Room, Manhattan</h3>
+                        <p class="project-desc">
+                            A sophisticated Manhattan residence where
+                            contemporary elegance meets timeless luxury. Curated
+                            furnishings and refined material palette define this
+                            living space.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Neoclassical Master Bedroom -->
+                <div
+                    class="project-card reveal"
+                    data-category="residential"
+                    data-project="5"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/5a919b222754913.67ec63cfa5517.jpg"
+                        alt="Neoclassical Master Bedroom"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat"
+                            >Bedroom &middot; Neoclassical</span
+                        >
+                        <h3>Neoclassical Master Bedroom</h3>
+                        <p class="project-desc">
+                            Classical proportions reimagined for modern living.
+                            Soft upholstery, symmetrical composition, and warm
+                            ambient lighting create an atmosphere of quiet
+                            opulence.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5. Boutique in Manhattan -->
+                <div
+                    class="project-card wide reveal reveal-delay-1"
+                    data-category="commercial"
+                    data-project="3"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/160e24233340527.68adc75e4d5eb.jpg"
+                        alt="Boutique in Manhattan"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat"
+                            >Commercial &middot; Retail</span
+                        >
+                        <h3>Boutique in Manhattan</h3>
+                        <p class="project-desc">
+                            A high-end Manhattan boutique designed to elevate
+                            the shopping experience. Minimal architecture frames
+                            the merchandise as art, with strategic lighting
+                            guiding the customer journey.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 6. Chelsea Studio -->
+                <div
+                    class="project-card reveal reveal-delay-2"
+                    data-category="residential"
+                    data-project="6"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6531f3222737543.67ec1c8092054.jpg"
+                        alt="Studio in Chelsea"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat">Studio &middot; Classic</span>
+                        <h3>Classic Chelsea Studio</h3>
+                        <p class="project-desc">
+                            A pre-war Chelsea building studio transformed into a
+                            bright, functional living space. Original
+                            architectural details meet contemporary design
+                            sensibility.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 7. Clubroom -->
+                <div
+                    class="project-card reveal"
+                    data-category="commercial"
+                    data-project="2"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/daa101233336943.68adbc622c96b.jpg"
+                        alt="Clubroom"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat"
+                            >Commercial &middot; Hospitality</span
+                        >
+                        <h3>Clubroom</h3>
+                        <p class="project-desc">
+                            An exclusive clubroom where dark sophistication and
+                            plush comfort converge. Designed for intimate
+                            gatherings and refined leisure.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 8. Minimalistic Apartment NY -->
+                <div
+                    class="project-card reveal reveal-delay-1"
+                    data-category="residential"
+                    data-project="8"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/48cf16222754129.67ec5f9d8db83.jpg"
+                        alt="Minimalistic Apartment New York"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat"
+                            >Apartment &middot; Minimalist</span
+                        >
+                        <h3>Minimalist Apartment, New York</h3>
+                        <p class="project-desc">
+                            Clean lines, neutral palette, and thoughtful spatial
+                            planning. Every element serves a purpose in this New
+                            York apartment where less truly means more.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 9. Loft Bathroom -->
+                <div
+                    class="project-card reveal reveal-delay-2"
+                    data-category="bathroom"
+                    data-project="4"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/9f5c35222867617.67ee71291e728.jpg"
+                        alt="Loft Bathroom"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat">Bathroom &middot; Loft</span>
+                        <h3>Loft Bathroom Interior</h3>
+                        <p class="project-desc">
+                            Industrial loft aesthetics softened with warm
+                            materials and moody lighting. Raw concrete meets
+                            polished brass in this dramatic bathroom design.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 10. Living Dining Area, Canada -->
+                <div
+                    class="project-card wide reveal"
+                    data-category="residential"
+                    data-project="11"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/5138ba233345317.68add6df37f06.jpg"
+                        alt="Living Dining Area Canada"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat">Living &middot; Dining</span>
+                        <h3>Living & Dining Area, North York</h3>
+                        <p class="project-desc">
+                            An open-plan living and dining space in Canada
+                            balancing warmth and modernity. Natural wood tones
+                            ground the design while expansive glazing connects
+                            interior with landscape.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 11. Stylish Living Room -->
+                <div
+                    class="project-card reveal reveal-delay-1"
+                    data-category="residential"
+                    data-project="9"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09e038222755487.67ec673995ae7.jpg"
+                        alt="Stylish Living Room"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat"
+                            >Living Room &middot; Contemporary</span
+                        >
+                        <h3>Stylish Living Room</h3>
+                        <p class="project-desc">
+                            Bold color accents punctuate a refined neutral base.
+                            This living room is designed for both everyday
+                            comfort and entertaining in style.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 12. Home Gym -->
+                <div
+                    class="project-card reveal reveal-delay-2"
+                    data-category="commercial"
+                    data-project="10"
+                >
+                    <img
+                        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/a0baf9233341809.68adcb5f3d52f.jpg"
+                        alt="Home Gym"
+                        loading="lazy"
+                    />
+                    <div class="project-info">
+                        <span class="project-cat"
+                            >Commercial &middot; Fitness</span
+                        >
+                        <h3>Home Gym</h3>
+                        <p class="project-desc">
+                            A private gym that motivates. Dark tones, strategic
+                            mirror placement, and professional-grade equipment
+                            layout create a dedicated fitness environment at
+                            home.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="process-section" id="process">
+            <div class="process-header">
+                <div class="section-tag reveal">How I Work</div>
+                <h2 class="section-title reveal reveal-delay-1">
+                    From Vision to Reality
+                </h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    A transparent, collaborative process that ensures your
+                    project exceeds expectations at every stage.
+                </p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step reveal">
+                    <div class="step-num">01</div>
+                    <h3>Brief & Research</h3>
+                    <p>
+                        We discuss your vision, preferences, and requirements. I
+                        study the space, gather references, and define the
+                        project direction.
+                    </p>
+                </div>
+                <div class="process-step reveal reveal-delay-1">
+                    <div class="step-num">02</div>
+                    <h3>Concept Development</h3>
+                    <p>
+                        Mood boards, material palettes, and spatial planning.
+                        You see the design direction before any 3D work begins.
+                    </p>
+                </div>
+                <div class="process-step reveal reveal-delay-2">
+                    <div class="step-num">03</div>
+                    <h3>3D Visualization</h3>
+                    <p>
+                        Photorealistic renders bring the concept to life. Every
+                        detail — lighting, materials, furniture — is refined
+                        until perfect.
+                    </p>
+                </div>
+                <div class="process-step reveal reveal-delay-3">
+                    <div class="step-num">04</div>
+                    <h3>Final Delivery</h3>
+                    <p>
+                        High-resolution renders, technical drawings, and
+                        specifications. Everything you need to bring the design
+                        to reality.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
+            <div class="contact-bg">
+                <img
+                    src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/76803d234669147.68c837142c2af.jpg"
+                    alt=""
+                    loading="lazy"
+                />
+            </div>
+            <div class="contact-content">
+                <div class="section-tag reveal">Get in Touch</div>
+                <h2 class="section-title reveal reveal-delay-1">
+                    Let's Create Something
+                    <em
+                        style="
+                            font-family: var(--serif);
+                            font-style: italic;
+                            color: var(--gold);
+                        "
+                        >Beautiful</em
+                    >
+                </h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    Have a project in mind? I'd love to hear about it. Let's
+                    discuss how we can transform your space.
+                </p>
+                <div class="contact-links reveal reveal-delay-3">
+                    <a
+                        href="mailto:viktoria.strelkova888@gmail.com"
+                        class="contact-link"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="m2 7 10 7 10-7" />
+                        </svg>
+                        viktoria.strelkova888@gmail.com
+                    </a>
+                    <a href="tel:+79787970762" class="contact-link">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.11 3h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.91 10.6a16 16 0 0 0 6.49 6.49l1.42-1.42a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68a2 2 0 0 1 1.72 2z"
+                            />
+                        </svg>
+                        +7 (978) 797-07-62
+                    </a>
+                    <a
+                        href="https://www.behance.net/viktoriast1ff9"
+                        target="_blank"
+                        class="contact-link"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"
+                            />
+                        </svg>
+                        Behance
+                    </a>
+                </div>
+                <a
+                    href="mailto:viktoria.strelkova888@gmail.com"
+                    class="contact-btn reveal reveal-delay-4"
+                >
+                    Discuss Your Project
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        width="16"
+                        height="16"
+                    >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div>&copy; 2025 Victoria Strelkova. All rights reserved.</div>
+            <div class="footer-social">
+                <a href="https://www.behance.net/viktoriast1ff9" target="_blank"
+                    >Behance</a
+                >
+                <a href="mailto:viktoria.strelkova888@gmail.com">Email</a>
+            </div>
+        </footer>
+
+        <!-- LIGHTBOX -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-header">
+                <div class="lightbox-title" id="lightboxTitle"></div>
+                <button class="lightbox-close" onclick="closeLightbox()">
+                    &times;
+                </button>
+            </div>
+            <div class="lightbox-body">
+                <button
+                    class="lightbox-nav lightbox-prev"
+                    onclick="prevSlide()"
+                >
+                    &#8249;
+                </button>
+                <div class="lightbox-images" id="lightboxImages"></div>
+                <button
+                    class="lightbox-nav lightbox-next"
+                    onclick="nextSlide()"
+                >
+                    &#8250;
+                </button>
+            </div>
+            <div class="lightbox-footer">
+                <span class="lightbox-counter" id="lightboxCounter"></span>
+                <a
+                    class="lightbox-link"
+                    id="lightboxLink"
+                    href="#"
+                    target="_blank"
+                    >View on Behance &rarr;</a
+                >
+            </div>
+        </div>
+
+        <script>
+            // PROJECT DATA
+            const projects = [
+                {
+                    title: "Elegant Art-Deco Bathroom",
+                    url: "https://www.behance.net/gallery/234669147/Elegant-Art-Deco-Bathroom",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/720779234669147.68c837142ba57.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/76803d234669147.68c837142c2af.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/98c55e234669147.68c837142d4c3.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/ec9284234669147.68c837142cbcb.jpg",
+                    ],
+                },
+                {
+                    title: "Organic Modern Bedroom",
+                    url: "https://www.behance.net/gallery/233352841/Organic-Modern-Bedroom",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/009b0e233352841.68adf043abc47.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/0101a2233352841.68adf043acee3.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/4c5b45233352841.68adf043ac766.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/bc0c0a233352841.68adf043ac249.jpg",
+                    ],
+                },
+                {
+                    title: "Clubroom",
+                    url: "https://www.behance.net/gallery/233336943/Clubroom",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/daa101233336943.68adbc622c96b.jpg",
+                    ],
+                },
+                {
+                    title: "Boutique in Manhattan",
+                    url: "https://www.behance.net/gallery/233340527/Boutique-in-Manhattan",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/160e24233340527.68adc75e4d5eb.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/20b37c233340527.68adc75e4df43.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/e63f2a233340527.68adc75e4cfe7.jpg",
+                    ],
+                },
+                {
+                    title: "Loft Bathroom Interior",
+                    url: "https://www.behance.net/gallery/222867617/Loft-Bathroom-Interior",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/9f5c35222867617.67ee71291e728.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/b003db222867617.67ee71291da3f.jpg",
+                    ],
+                },
+                {
+                    title: "Neoclassical Master Bedroom",
+                    url: "https://www.behance.net/gallery/222754913/somfortable-master-bedroom-in-the-neoclassical-style",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/467c4a222754913.67ec63cfa4796.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/5a919b222754913.67ec63cfa5517.jpg",
+                    ],
+                },
+                {
+                    title: "Classic Chelsea Studio",
+                    url: "https://www.behance.net/gallery/222737543/Studio-in-classic-pre-war-Chelsea-building",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/03fc30222737543.67ec1c8288942.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/065d4b222737543.67ec1c8288315.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/6531f3222737543.67ec1c8092054.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/9b1639222737543.67ec1c82083dd.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/c15c6c222737543.67ec1c8173ec3.jpg",
+                    ],
+                },
+                {
+                    title: "Luxury Living Room, Manhattan",
+                    url: "https://www.behance.net/gallery/222739837/Luxury-living-room-in-Residence-of-Manhattan",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/0c71ec222739837.67ec24a1c5be1.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/5f2415222739837.67ec24a1c3a0f.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/8085a9222739837.67ec24a1c3fbf.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/823407222739837.67ec24a1c4bc6.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/950631222739837.67ec24a1c54da.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/c70256222739837.67ec24a1c4558.jpg",
+                    ],
+                },
+                {
+                    title: "Minimalist Apartment, New York",
+                    url: "https://www.behance.net/gallery/222754129/Minimalistic-apartment-in-New-York",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/48cf16222754129.67ec5f9d8db83.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/54ecba222754129.67ec5fa0c61e5.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/69663c222754129.67ec5fa0c5c8c.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/91fca3222754129.67ec5fa0c70d3.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/eea096222754129.67ec5fa0c6950.jpg",
+                    ],
+                },
+                {
+                    title: "Stylish Living Room",
+                    url: "https://www.behance.net/gallery/222755487/Stylish-living-room",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/09e038222755487.67ec673995ae7.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/b7c61e222755487.67ec67399619c.jpg",
+                    ],
+                },
+                {
+                    title: "Home Gym",
+                    url: "https://www.behance.net/gallery/233341809/Home-Gym",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/a0baf9233341809.68adcb5f3d52f.jpg",
+                    ],
+                },
+                {
+                    title: "Living & Dining Area, North York",
+                    url: "https://www.behance.net/gallery/233345317/Living-Dining-Area-in-North-Yourk-Canada",
+                    images: [
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/047cc4233345317.68add6df3956f.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/5138ba233345317.68add6df37f06.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/58ee38233345317.68add6df38524.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/6b8421233345317.68add6df38d99.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/c25d09233345317.68add6df3a3c9.jpg",
+                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/e7f3b6233345317.68add6df39ae0.jpg",
+                    ],
+                },
+            ];
+
+            // LOADER
+            window.addEventListener("load", () => {
+                setTimeout(() => {
+                    document.querySelector(".loader").classList.add("hidden");
+                }, 600);
+            });
+
+            // NAV SCROLL
+            const nav = document.getElementById("nav");
+            let lastScroll = 0;
+            window.addEventListener("scroll", () => {
+                const st = window.scrollY;
+                nav.classList.toggle("scrolled", st > 80);
+                lastScroll = st;
+            });
+
+            // MOBILE MENU
+            function openMobile() {
+                document.getElementById("mobileMenu").classList.add("open");
+            }
+            function closeMobile() {
+                document.getElementById("mobileMenu").classList.remove("open");
+            }
+
+            // REVEAL ON SCROLL
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add("visible");
+                            observer.unobserve(e.target);
+                        }
+                    });
+                },
+                { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
+            );
+            document
+                .querySelectorAll(".reveal,.hero")
+                .forEach((el) => observer.observe(el));
+
+            // PORTFOLIO FILTERS
+            document.querySelectorAll(".filter-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    document
+                        .querySelectorAll(".filter-btn")
+                        .forEach((b) => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    const filter = btn.dataset.filter;
+                    document
+                        .querySelectorAll(".project-card")
+                        .forEach((card) => {
+                            if (
+                                filter === "all" ||
+                                card.dataset.category === filter
+                            ) {
+                                card.style.display = "";
+                            } else {
+                                card.style.display = "none";
+                            }
+                        });
+                });
+            });
+
+            // LIGHTBOX
+            let currentProject = null;
+            let currentSlide = 0;
+
+            document.querySelectorAll(".project-card").forEach((card) => {
+                card.addEventListener("click", () => {
+                    const idx = parseInt(card.dataset.project);
+                    openLightbox(idx);
+                });
+            });
+
+            function openLightbox(idx) {
+                currentProject = idx;
+                currentSlide = 0;
+                const p = projects[idx];
+                document.getElementById("lightboxTitle").textContent = p.title;
+                document.getElementById("lightboxLink").href = p.url;
+                const container = document.getElementById("lightboxImages");
+                container.innerHTML = p.images
+                    .map(
+                        (img) =>
+                            `<div class="lightbox-slide"><img src="${img}" alt="${p.title}" loading="lazy"></div>`,
+                    )
+                    .join("");
+                container.style.transform = "translateX(0)";
+                updateCounter();
+                document.getElementById("lightbox").classList.add("open");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeLightbox() {
+                document.getElementById("lightbox").classList.remove("open");
+                document.body.style.overflow = "";
+            }
+
+            function nextSlide() {
+                if (!currentProject && currentProject !== 0) return;
+                const total = projects[currentProject].images.length;
+                currentSlide = (currentSlide + 1) % total;
+                document.getElementById("lightboxImages").style.transform =
+                    `translateX(-${currentSlide * 100}%)`;
+                updateCounter();
+            }
+
+            function prevSlide() {
+                if (!currentProject && currentProject !== 0) return;
+                const total = projects[currentProject].images.length;
+                currentSlide = (currentSlide - 1 + total) % total;
+                document.getElementById("lightboxImages").style.transform =
+                    `translateX(-${currentSlide * 100}%)`;
+                updateCounter();
+            }
+
+            function updateCounter() {
+                const total = projects[currentProject].images.length;
+                document.getElementById("lightboxCounter").textContent =
+                    `${currentSlide + 1} / ${total}`;
+            }
+
+            // KEYBOARD NAV FOR LIGHTBOX
+            document.addEventListener("keydown", (e) => {
+                if (
+                    !document
+                        .getElementById("lightbox")
+                        .classList.contains("open")
+                )
+                    return;
+                if (e.key === "Escape") closeLightbox();
+                if (e.key === "ArrowRight") nextSlide();
+                if (e.key === "ArrowLeft") prevSlide();
+            });
+
+            // SMOOTH SCROLL FOR ANCHOR LINKS
+            document.querySelectorAll('a[href^="#"]').forEach((a) => {
+                a.addEventListener("click", (e) => {
+                    const target = document.querySelector(
+                        a.getAttribute("href"),
+                    );
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                    }
+                });
+            });
+        </script>
+    </body>
 </html>
