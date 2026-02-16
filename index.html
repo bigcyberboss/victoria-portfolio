@@ -808,6 +808,11 @@
                 max-width: 1400px;
                 margin: 0 auto;
             }
+            .about-images {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
             .about-image {
                 position: relative;
                 overflow: hidden;
@@ -1694,12 +1699,21 @@
         <main>
             <section id="about">
                 <div class="about">
-                    <div class="about-image reveal">
-                        <img
-                            src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/467c4a222754913.67ec63cfa4796.jpg"
-                            alt="Neoclassical Bedroom Design"
-                            loading="lazy"
-                        />
+                    <div class="about-images reveal">
+                        <div class="about-image">
+                            <img
+                                src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/467c4a222754913.67ec63cfa4796.jpg"
+                                alt="Neoclassical Bedroom Design"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="about-image">
+                            <img
+                                src="IMG_4922.WEBP"
+                                alt="Виктория Стрелкова — CGI-artist и дизайнер интерьера"
+                                loading="lazy"
+                            />
+                        </div>
                     </div>
                     <div class="about-text">
                         <div
@@ -1740,6 +1754,20 @@
                             текстуры и атмосферы. Я верю, что великий дизайн -
                             это не только эстетика, это создание среды, которая
                             откликается в людях, которые в ней живут.
+                        </p>
+                        <p
+                            class="section-desc reveal reveal-delay-3"
+                            style="
+                                margin-top: 1rem;
+                                font-style: italic;
+                                opacity: 0.85;
+                            "
+                            data-ru="Образование: магистр инженерии наноэлектроники, Севастопольский государственный университет (2016–2018)."
+                            data-en="Education: Master's degree in Nanoelectronics Engineering, Sevastopol State University (2016–2018)."
+                        >
+                            Образование: магистр инженерии наноэлектроники,
+                            Севастопольский государственный университет
+                            (2016–2018).
                         </p>
                         <div class="about-stats reveal reveal-delay-3">
                             <div>
@@ -1837,13 +1865,12 @@
                             Дизайн интерьера
                         </h3>
                         <p
-                            data-ru="Полные концепции интерьера - от мудбордов до палитры материалов. Создаю гармоничные пространства, где красота сочетается с функциональностью, адаптированные под стиль жизни каждого клиента."
-                            data-en="Complete interior design concepts from mood boards to material palettes. I create cohesive spaces that balance beauty with functionality, tailored to each client's lifestyle and vision."
+                            data-ru="Создаю гармоничные пространства, где красота сочетается с функциональностью, адаптированные под стиль жизни каждого клиента."
+                            data-en="I create cohesive spaces that balance beauty with functionality, tailored to each client's lifestyle and vision."
                         >
-                            Полные концепции интерьера - от мудбордов до палитры
-                            материалов. Создаю гармоничные пространства, где
-                            красота сочетается с функциональностью,
-                            адаптированные под стиль жизни каждого клиента.
+                            Создаю гармоничные пространства, где красота
+                            сочетается с функциональностью, адаптированные под
+                            стиль жизни каждого клиента.
                         </p>
                     </div>
                     <div class="service-card reveal reveal-delay-2">
@@ -1855,12 +1882,12 @@
                             Коммерческие пространства
                         </h3>
                         <p
-                            data-ru="Бутики, клубные комнаты, спортзалы и коммерческие интерьеры, которые усиливают ваш бренд и создают незабываемый опыт для клиентов и гостей."
-                            data-en="Boutiques, clubrooms, gyms, and commercial interiors designed to elevate your brand and create memorable experiences for your customers and guests."
+                            data-ru="Коммерческие интерьеры сегмента HoReCa, которые усиливают ваш бренд и создают незабываемый опыт для клиентов и гостей."
+                            data-en="Commercial HoReCa interiors designed to elevate your brand and create memorable experiences for your customers and guests."
                         >
-                            Бутики, клубные комнаты, спортзалы и коммерческие
-                            интерьеры, которые усиливают ваш бренд и создают
-                            незабываемый опыт для клиентов и гостей.
+                            Коммерческие интерьеры сегмента HoReCa, которые
+                            усиливают ваш бренд и создают незабываемый опыт для
+                            клиентов и гостей.
                         </p>
                     </div>
                 </div>
@@ -2424,12 +2451,11 @@
                             Финальная сдача
                         </h3>
                         <p
-                            data-ru="Рендеры в высоком разрешении, технические чертежи и спецификации. Всё, что нужно для воплощения дизайна в реальность."
-                            data-en="High-resolution renders, technical drawings, and specifications. Everything you need to bring the design to reality."
+                            data-ru="Планировочные решения, рендеры в высоком разрешении. Всё, что нужно для воплощения дизайна в реальность."
+                            data-en="Layout solutions, high-resolution renders. Everything you need to bring the design to reality."
                         >
-                            Рендеры в высоком разрешении, технические чертежи и
-                            спецификации. Всё, что нужно для воплощения дизайна
-                            в реальность.
+                            Планировочные решения, рендеры в высоком разрешении.
+                            Всё, что нужно для воплощения дизайна в реальность.
                         </p>
                     </div>
                 </div>
@@ -2737,7 +2763,6 @@
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/54ecba222754129.67ec5fa0c61e5.jpg",
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/69663c222754129.67ec5fa0c5c8c.jpg",
                         "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/91fca3222754129.67ec5fa0c70d3.jpg",
-                        "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/eea096222754129.67ec5fa0c6950.jpg",
                     ],
                 },
                 {
