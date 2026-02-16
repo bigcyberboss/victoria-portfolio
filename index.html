@@ -808,10 +808,13 @@
                 max-width: 1400px;
                 margin: 0 auto;
             }
-            .about-images {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
+            .about-photo {
+                float: right;
+                width: 180px;
+                height: 220px;
+                object-fit: cover;
+                margin: 0 0 1.5rem 2rem;
+                border: 1px solid rgba(201, 169, 110, 0.3);
             }
             .about-image {
                 position: relative;
@@ -1388,6 +1391,13 @@
                     flex-direction: column;
                     align-items: flex-start;
                 }
+                .about-photo {
+                    float: none;
+                    display: block;
+                    width: 140px;
+                    height: 170px;
+                    margin: 0 auto 1.5rem;
+                }
                 .about-stats {
                     grid-template-columns: repeat(3, 1fr);
                     gap: 1rem;
@@ -1699,23 +1709,20 @@
         <main>
             <section id="about">
                 <div class="about">
-                    <div class="about-images reveal">
-                        <div class="about-image">
-                            <img
-                                src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/467c4a222754913.67ec63cfa4796.jpg"
-                                alt="Neoclassical Bedroom Design"
-                                loading="lazy"
-                            />
-                        </div>
-                        <div class="about-image">
-                            <img
-                                src="IMG_4922.WEBP"
-                                alt="Виктория Стрелкова — CGI-artist и дизайнер интерьера"
-                                loading="lazy"
-                            />
-                        </div>
+                    <div class="about-image reveal">
+                        <img
+                            src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/467c4a222754913.67ec63cfa4796.jpg"
+                            alt="Neoclassical Bedroom Design"
+                            loading="lazy"
+                        />
                     </div>
                     <div class="about-text">
+                        <img
+                            class="about-photo reveal"
+                            src="IMG_4922.WEBP"
+                            alt="Виктория Стрелкова — CGI-artist и дизайнер интерьера"
+                            loading="lazy"
+                        />
                         <div
                             class="section-tag reveal"
                             data-ru="Обо мне"
