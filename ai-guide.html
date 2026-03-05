@@ -1,0 +1,1960 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=5"
+        />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>AI-инструменты для 3ds Max + Corona | Гайд</title>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            :root {
+                --bg: #0a0a0a;
+                --bg2: #111;
+                --bg3: #1a1a1a;
+                --text: #f5f0eb;
+                --text2: #a09890;
+                --text3: #6b6560;
+                --gold: #c9a96e;
+                --gold2: #b8944f;
+                --gold-glow: rgba(201, 169, 110, 0.15);
+                --serif: "Cormorant Garamond", Georgia, serif;
+                --sans: "Inter", system-ui, sans-serif;
+                --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            html {
+                scroll-behavior: smooth;
+                scrollbar-width: thin;
+                scrollbar-color: var(--gold) var(--bg);
+            }
+            body {
+                font-family: var(--sans);
+                background: var(--bg);
+                color: var(--text);
+                line-height: 1.7;
+                overflow-x: hidden;
+                -webkit-font-smoothing: antialiased;
+            }
+            ::selection {
+                background: var(--gold);
+                color: var(--bg);
+            }
+            a {
+                color: var(--gold);
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            a:hover {
+                color: var(--text);
+            }
+
+            /* SCROLL PROGRESS */
+            .scroll-progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 2px;
+                background: linear-gradient(90deg, var(--gold2), var(--gold));
+                z-index: 101;
+                transition: width 0.1s linear;
+                pointer-events: none;
+            }
+
+            /* BACK TO TOP */
+            .back-to-top {
+                position: fixed;
+                left: 1.5rem;
+                bottom: 2rem;
+                width: 44px;
+                height: 44px;
+                border: 1px solid rgba(201, 169, 110, 0.3);
+                background: rgba(10, 10, 10, 0.85);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                color: var(--gold);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 90;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(20px);
+                transition: all 0.4s var(--ease);
+            }
+            .back-to-top.visible {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            .back-to-top:hover {
+                border-color: var(--gold);
+                background: rgba(201, 169, 110, 0.1);
+            }
+            .back-to-top svg {
+                width: 18px;
+                height: 18px;
+                transition: transform 0.3s;
+            }
+            .back-to-top:hover svg {
+                transform: translateY(-2px);
+            }
+
+            /* NAV */
+            .nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                padding: 1rem 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: rgba(10, 10, 10, 0.92);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+            }
+            .nav-logo {
+                font-family: var(--serif);
+                font-size: 1.3rem;
+                font-weight: 400;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--text);
+            }
+            .nav-logo span {
+                color: var(--gold);
+            }
+            .nav-toc {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+            }
+            .nav-toc a {
+                font-size: 0.7rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--text2);
+                transition: color 0.3s;
+            }
+            .nav-toc a:hover {
+                color: var(--gold);
+            }
+
+            /* HERO */
+            .hero {
+                padding: 10rem 3rem 6rem;
+                max-width: 900px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .hero-tag {
+                display: inline-block;
+                font-size: 0.75rem;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 1.5rem;
+                font-weight: 500;
+            }
+            .hero h1 {
+                font-family: var(--serif);
+                font-size: clamp(2.2rem, 5vw, 4rem);
+                font-weight: 300;
+                line-height: 1.15;
+                margin-bottom: 1.5rem;
+            }
+            .hero h1 em {
+                font-style: italic;
+                color: var(--gold);
+            }
+            .hero-sub {
+                font-size: 1.05rem;
+                color: var(--text2);
+                font-weight: 300;
+                max-width: 600px;
+                margin: 0 auto 2rem;
+                line-height: 1.8;
+            }
+            .hero-note {
+                font-size: 0.85rem;
+                color: var(--text3);
+                font-style: italic;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            /* SECTIONS */
+            .section {
+                padding: 5rem 3rem;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+            .section-alt {
+                background: var(--bg2);
+            }
+            .section-alt .section {
+                padding: 5rem 3rem;
+            }
+            .section-tag {
+                font-size: 0.65rem;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 1rem;
+            }
+            .section-title {
+                font-family: var(--serif);
+                font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+                font-weight: 300;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            .section-desc {
+                color: var(--text2);
+                font-weight: 300;
+                line-height: 1.8;
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+
+            /* REVEAL */
+            .reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                transition:
+                    opacity 0.8s var(--ease-out),
+                    transform 0.8s var(--ease-out);
+            }
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .reveal-delay-1 {
+                transition-delay: 0.1s;
+            }
+            .reveal-delay-2 {
+                transition-delay: 0.2s;
+            }
+            .reveal-delay-3 {
+                transition-delay: 0.3s;
+            }
+            .reveal-delay-4 {
+                transition-delay: 0.4s;
+            }
+
+            /* OVERVIEW TABLE */
+            .overview-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2rem 0;
+            }
+            .overview-table th {
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--gold);
+                padding: 1rem 1.2rem;
+                text-align: left;
+                border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+                font-weight: 500;
+            }
+            .overview-table td {
+                padding: 1rem 1.2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 0.9rem;
+                color: var(--text2);
+                font-weight: 300;
+            }
+            .overview-table tr:hover td {
+                background: rgba(201, 169, 110, 0.03);
+            }
+            .overview-table .saving {
+                color: var(--gold);
+                font-weight: 500;
+            }
+
+            /* TOOL CARDS */
+            .tools-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
+            .tool-card {
+                padding: 2rem 2rem;
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                transition: all 0.5s var(--ease);
+                position: relative;
+                overflow: hidden;
+            }
+            .tool-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: var(--gold);
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.5s var(--ease);
+            }
+            .tool-card:hover::before {
+                transform: scaleX(1);
+            }
+            .tool-card:hover {
+                border-color: rgba(201, 169, 110, 0.2);
+                background: rgba(201, 169, 110, 0.03);
+            }
+            .tool-card-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 0.8rem;
+                gap: 1rem;
+            }
+            .tool-name {
+                font-family: var(--serif);
+                font-size: 1.4rem;
+                font-weight: 400;
+                color: var(--text);
+            }
+            .tool-badge {
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.3rem 0.7rem;
+                border: 1px solid rgba(201, 169, 110, 0.3);
+                color: var(--gold);
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            .tool-badge.free {
+                border-color: rgba(100, 200, 100, 0.4);
+                color: #7dcc7d;
+            }
+            .tool-desc {
+                color: var(--text2);
+                font-size: 0.88rem;
+                line-height: 1.7;
+                font-weight: 300;
+                margin-bottom: 1rem;
+            }
+            .tool-meta {
+                display: flex;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+            .tool-meta-item {
+                font-size: 0.75rem;
+                color: var(--text3);
+            }
+            .tool-meta-item strong {
+                color: var(--text2);
+                font-weight: 500;
+            }
+            .tool-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.75rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-top: 1rem;
+                transition: all 0.3s;
+                padding: 0.5rem 1.2rem;
+                border: 1px solid rgba(201, 169, 110, 0.3);
+            }
+            .tool-link:hover {
+                color: var(--bg);
+                background: var(--gold);
+                border-color: var(--gold);
+            }
+            .tool-link svg {
+                width: 14px;
+                height: 14px;
+                transition: transform 0.3s;
+            }
+            .tool-link:hover svg {
+                transform: translateX(3px);
+            }
+
+            /* SINGLE TOOL (full width) */
+            .tool-card.featured {
+                grid-column: 1/-1;
+                background: rgba(201, 169, 110, 0.04);
+                border-color: rgba(201, 169, 110, 0.15);
+            }
+
+            /* QUALITY BAR */
+            .quality-bar {
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                margin-top: 0.8rem;
+            }
+            .quality-label {
+                font-size: 0.7rem;
+                color: var(--text3);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                white-space: nowrap;
+            }
+            .quality-track {
+                flex: 1;
+                height: 4px;
+                background: rgba(255, 255, 255, 0.08);
+                position: relative;
+                max-width: 120px;
+            }
+            .quality-fill {
+                height: 100%;
+                background: var(--gold);
+                transition: width 0.8s var(--ease-out);
+            }
+            .quality-score {
+                font-size: 0.75rem;
+                color: var(--gold);
+                font-weight: 500;
+            }
+
+            /* STEPS */
+            .steps {
+                counter-reset: step;
+                margin: 2rem 0;
+            }
+            .step {
+                display: flex;
+                gap: 2rem;
+                padding: 2rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                counter-increment: step;
+            }
+            .step:last-child {
+                border-bottom: none;
+            }
+            .step-num {
+                flex-shrink: 0;
+                width: 3.5rem;
+                height: 3.5rem;
+                border: 1px solid var(--gold);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--serif);
+                font-size: 1.2rem;
+                color: var(--gold);
+                transition: all 0.4s var(--ease);
+            }
+            .step:hover .step-num {
+                background: var(--gold);
+                color: var(--bg);
+            }
+            .step-content h3 {
+                font-family: var(--serif);
+                font-size: 1.3rem;
+                font-weight: 400;
+                margin-bottom: 0.5rem;
+            }
+            .step-content p {
+                color: var(--text2);
+                font-size: 0.9rem;
+                line-height: 1.7;
+                font-weight: 300;
+            }
+            .step-content .step-tag {
+                font-size: 0.7rem;
+                color: var(--gold);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-top: 0.5rem;
+                display: inline-block;
+            }
+
+            /* BUDGET TABLE */
+            .budget-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+            .budget-card {
+                padding: 2rem 1.5rem;
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                text-align: center;
+                transition: all 0.4s var(--ease);
+            }
+            .budget-card:hover {
+                border-color: rgba(201, 169, 110, 0.3);
+                background: rgba(201, 169, 110, 0.03);
+            }
+            .budget-card.recommended {
+                border-color: rgba(201, 169, 110, 0.4);
+                background: rgba(201, 169, 110, 0.05);
+            }
+            .budget-card.recommended::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: var(--gold);
+            }
+            .budget-card.recommended {
+                position: relative;
+            }
+            .budget-level {
+                font-size: 0.65rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 0.8rem;
+            }
+            .budget-price {
+                font-family: var(--serif);
+                font-size: 2.2rem;
+                font-weight: 300;
+                color: var(--text);
+                margin-bottom: 0.3rem;
+            }
+            .budget-price-note {
+                font-size: 0.75rem;
+                color: var(--text3);
+                margin-bottom: 1.2rem;
+            }
+            .budget-list {
+                list-style: none;
+                text-align: left;
+            }
+            .budget-list li {
+                font-size: 0.8rem;
+                color: var(--text2);
+                padding: 0.4rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+                font-weight: 300;
+            }
+            .budget-list li::before {
+                content: "+";
+                color: var(--gold);
+                margin-right: 0.5rem;
+            }
+
+            /* CALLOUT */
+            .callout {
+                padding: 2rem 2.5rem;
+                border-left: 2px solid var(--gold);
+                background: rgba(201, 169, 110, 0.04);
+                margin: 2rem 0;
+            }
+            .callout p {
+                color: var(--text2);
+                font-size: 0.92rem;
+                line-height: 1.8;
+                font-weight: 300;
+            }
+            .callout strong {
+                color: var(--text);
+                font-weight: 500;
+            }
+
+            /* FOOTER */
+            .footer {
+                padding: 3rem;
+                text-align: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 0.8rem;
+                color: var(--text3);
+            }
+            .footer a {
+                color: var(--gold);
+            }
+
+            /* MOBILE NAV */
+            .nav-burger {
+                display: none;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                padding: 5px;
+                min-width: 44px;
+                min-height: 44px;
+                align-items: center;
+                justify-content: center;
+            }
+            .nav-burger span {
+                width: 24px;
+                height: 1px;
+                background: var(--text);
+                transition: all 0.3s;
+            }
+
+            /* RESPONSIVE */
+            @media (min-width: 1920px) {
+                .section {
+                    max-width: 1300px;
+                }
+                .hero {
+                    max-width: 1000px;
+                }
+            }
+            @media (max-width: 1024px) {
+                .tools-grid {
+                    grid-template-columns: 1fr;
+                }
+                .budget-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 768px) {
+                .nav {
+                    padding: 0.8rem 1.5rem;
+                }
+                .nav-toc {
+                    display: none;
+                }
+                .nav-burger {
+                    display: flex;
+                }
+                .hero {
+                    padding: 7rem 1.5rem 4rem;
+                }
+                .section,
+                .section-alt .section {
+                    padding: 3.5rem 1.5rem;
+                }
+                .step {
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+                .budget-grid {
+                    grid-template-columns: 1fr;
+                }
+                .overview-table {
+                    font-size: 0.8rem;
+                }
+                .overview-table th,
+                .overview-table td {
+                    padding: 0.7rem 0.8rem;
+                }
+                .footer {
+                    padding: 2rem 1.5rem;
+                }
+            }
+            @media (max-width: 480px) {
+                .hero {
+                    padding: 6rem 1rem 3rem;
+                }
+                .hero h1 {
+                    font-size: 1.8rem;
+                }
+                .section,
+                .section-alt .section {
+                    padding: 3rem 1rem;
+                }
+                .tool-card {
+                    padding: 1.5rem;
+                }
+                .callout {
+                    padding: 1.5rem;
+                }
+                .nav {
+                    padding: 0.8rem 1rem;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    animation-duration: 0.01ms !important;
+                    transition-duration: 0.01ms !important;
+                    scroll-behavior: auto !important;
+                }
+                .reveal {
+                    opacity: 1 !important;
+                    transform: none !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="scroll-progress" id="scrollProgress"></div>
+        <button
+            class="back-to-top"
+            id="backToTop"
+            aria-label="Наверх"
+            onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+        </button>
+
+        <!-- NAV -->
+        <nav class="nav">
+            <a href="/" class="nav-logo">Victoria <span>Strelkova</span></a>
+            <div class="nav-toc">
+                <a href="#overview">Обзор</a>
+                <a href="#corona">Corona AI</a>
+                <a href="#models">3D-модели</a>
+                <a href="#textures">Текстуры</a>
+                <a href="#concepts">Концепты</a>
+                <a href="#search">Поиск</a>
+                <a href="#automation">Автоматизация</a>
+                <a href="#start">Старт</a>
+            </div>
+            <div
+                class="nav-burger"
+                onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+            >
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-tag reveal">Персональный гайд</div>
+            <h1 class="reveal reveal-delay-1">
+                AI-инструменты для <em>3ds Max + Corona</em>
+            </h1>
+            <p class="hero-sub reveal reveal-delay-2">
+                Как сэкономить 15-30 часов в месяц на рутине и сфокусироваться
+                на творчестве. Конкретные инструменты, цены и пошаговый план.
+            </p>
+            <p class="hero-note reveal reveal-delay-3">
+                Вик, я собрал для тебя всё самое полезное, что сейчас есть в
+                мире AI для твоей работы. Тут только то, что реально работает в
+                2025-2026 году.
+            </p>
+        </section>
+
+        <main>
+            <!-- OVERVIEW -->
+            <div class="section-alt">
+                <section class="section" id="overview">
+                    <div class="section-tag reveal">Быстрый обзор</div>
+                    <h2 class="section-title reveal reveal-delay-1">
+                        Что AI умеет уже сейчас
+                    </h2>
+                    <p class="section-desc reveal reveal-delay-2">
+                        Вот реальные цифры экономии времени для CGI-artist,
+                        работающего в 3ds Max + Corona:
+                    </p>
+                    <table class="overview-table reveal reveal-delay-3">
+                        <thead>
+                            <tr>
+                                <th>Задача</th>
+                                <th>Без AI</th>
+                                <th>С AI</th>
+                                <th>Экономия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Создать PBR-материал из фото</td>
+                                <td>30-60 мин</td>
+                                <td>1-2 мин</td>
+                                <td class="saving">~95%</td>
+                            </tr>
+                            <tr>
+                                <td>Рендер интерьерной сцены</td>
+                                <td>4 часа</td>
+                                <td>40 мин</td>
+                                <td class="saving">~80%</td>
+                            </tr>
+                            <tr>
+                                <td>Найти / создать 3D-модель декора</td>
+                                <td>2-4 часа</td>
+                                <td>15-30 мин</td>
+                                <td class="saving">~85%</td>
+                            </tr>
+                            <tr>
+                                <td>Концепт-визуализация для клиента</td>
+                                <td>1-2 дня</td>
+                                <td>2-3 часа</td>
+                                <td class="saving">~80%</td>
+                            </tr>
+                            <tr>
+                                <td>Описание проекта для Behance</td>
+                                <td>1 час</td>
+                                <td>10 мин</td>
+                                <td class="saving">~85%</td>
+                            </tr>
+                            <tr>
+                                <td>Апскейл рендера 2K &rarr; 4K</td>
+                                <td>4 ч (ререндер)</td>
+                                <td>5 мин</td>
+                                <td class="saving">~95%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+            <!-- CORONA AI -->
+            <section class="section" id="corona">
+                <div class="section-tag reveal">Уже есть в твоей Corona</div>
+                <h2 class="section-title reveal reveal-delay-1">
+                    Встроенные AI-инструменты
+                </h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    Это всё бесплатно и уже входит в твою подписку Corona.
+                    Возможно, ты не всё из этого используешь.
+                </p>
+
+                <div class="tools-grid">
+                    <div class="tool-card featured reveal">
+                        <div class="tool-card-header">
+                            <span class="tool-name"
+                                >Chaos Cosmos AI Material Generator</span
+                            >
+                            <span class="tool-badge free">Бесплатно</span>
+                        </div>
+                        <p class="tool-desc">
+                            Фотографируешь любую поверхность (мрамор на стройке,
+                            ткань в магазине, дерево на столе) &rarr; загружаешь
+                            фото &rarr; получаешь готовый PBR-материал (albedo,
+                            normal, roughness) прямо в Cosmos. Автоматическая
+                            коррекция перспективы, удаление освещения, бесшовный
+                            тайлинг.
+                        </p>
+                        <div class="tool-meta">
+                            <span class="tool-meta-item"
+                                ><strong>Где:</strong> Chaos Cosmos в 3ds
+                                Max</span
+                            >
+                            <span class="tool-meta-item"
+                                ><strong>Экономия:</strong> 30-60 мин &rarr; 1-2
+                                мин на материал</span
+                            >
+                            <span class="tool-meta-item"
+                                ><strong>На сцену:</strong> 10-20 часов
+                                экономии</span
+                            >
+                        </div>
+                        <div
+                            class="callout"
+                            style="margin-top: 1.5rem; margin-bottom: 0"
+                        >
+                            <p>
+                                <strong
+                                    >Это самый важный AI-инструмент для твоего
+                                    workflow.</strong
+                                >
+                                На типичную интерьерную сцену с 20-30
+                                уникальными материалами ты экономишь 10-20
+                                часов. Если ты ещё не используешь &mdash; начни
+                                с него.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tool-card reveal">
+                        <div class="tool-card-header">
+                            <span class="tool-name">AI Denoiser</span>
+                            <span class="tool-badge free">Бесплатно</span>
+                        </div>
+                        <p class="tool-desc">
+                            Нейросеть убирает шум из рендера. Можно
+                            останавливать рендер на 30-50 проходах вместо 200
+                            &mdash; результат выглядит чисто.
+                        </p>
+                        <div class="tool-meta">
+                            <span class="tool-meta-item"
+                                ><strong>Где:</strong> Render Settings &gt;
+                                Denoising</span
+                            >
+                            <span class="tool-meta-item"
+                                ><strong>Варианты:</strong> Intel AI или NVIDIA
+                                GPU AI</span
+                            >
+                            <span class="tool-meta-item"
+                                ><strong>Экономия:</strong> рендер быстрее в
+                                5-15 раз</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="tool-card reveal reveal-delay-1">
+                        <div class="tool-card-header">
+                            <span class="tool-name">AI Upscaler</span>
+                            <span class="tool-badge free">Бесплатно</span>
+                        </div>
+                        <p class="tool-desc">
+                            Рендеришь в 2K &mdash; AI увеличивает до 4K с
+                            сохранением деталей. Качество почти как нативный 4K
+                            рендер, а времени в 4 раза меньше.
+                        </p>
+                        <div class="tool-meta">
+                            <span class="tool-meta-item"
+                                ><strong>Где:</strong> Chaos Cloud, из панели
+                                Corona</span
+                            >
+                            <span class="tool-meta-item"
+                                ><strong>Версия:</strong> Corona 14+</span
+                            >
+                            <span class="tool-meta-item"
+                                ><strong>Экономия:</strong> 50-75% времени
+                                рендера</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="tool-card reveal">
+                        <div class="tool-card-header">
+                            <span class="tool-name">AI Enhancer</span>
+                            <span class="tool-badge free">Бесплатно</span>
+                        </div>
+                        <p class="tool-desc">
+                            Улучшает людей, растения и мелкие детали на рендере
+                            в один клик. Использует Z-Depth и Material ID для
+                            умного улучшения &mdash; не просто шарпит, а
+                            добавляет реалистичные детали.
+                        </p>
+                        <div class="tool-meta">
+                            <span class="tool-meta-item"
+                                ><strong>Где:</strong> Chaos Cloud</span
+                            >
+                            <span class="tool-meta-item"
+                                ><strong>Версия:</strong> Corona 13+</span
+                            >
+                            <span class="tool-meta-item"
+                                ><strong>Экономия:</strong> часы допрендера
+                                &rarr; минуты</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3D MODELS -->
+            <div class="section-alt">
+                <section class="section" id="models">
+                    <div class="section-tag reveal">Генерация 3D</div>
+                    <h2 class="section-title reveal reveal-delay-1">
+                        AI-генерация 3D-моделей
+                    </h2>
+                    <p class="section-desc reveal reveal-delay-2">
+                        Когда нужен ковёр, ваза, лампа или стул &mdash; а ждать
+                        неделю нет времени. Фоткаешь предмет или описываешь
+                        текстом &rarr; получаешь 3D-модель.
+                    </p>
+
+                    <div class="tools-grid">
+                        <div class="tool-card reveal">
+                            <div class="tool-card-header">
+                                <span class="tool-name">Meshy AI</span>
+                                <span class="tool-badge">Лучший старт</span>
+                            </div>
+                            <p class="tool-desc">
+                                Загружаешь фото предмета (или описываешь
+                                текстом) &rarr; 3D-модель за 30-90 секунд. Есть
+                                плагин прямо для 3ds Max &mdash; импорт без
+                                выхода из программы.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Форматы:</strong> FBX, OBJ,
+                                    GLB</span
+                                >
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong> Бесплатно (200
+                                    кредитов/мес) или $14.50/мес</span
+                                >
+                            </div>
+                            <div class="quality-bar">
+                                <span class="quality-label">Качество</span>
+                                <div class="quality-track">
+                                    <div
+                                        class="quality-fill"
+                                        style="width: 50%"
+                                    ></div>
+                                </div>
+                                <span class="quality-score">5/10</span>
+                            </div>
+                            <a
+                                href="https://www.meshy.ai/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="tool-link"
+                            >
+                                meshy.ai
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="tool-card reveal reveal-delay-1">
+                            <div class="tool-card-header">
+                                <span class="tool-name">Rodin AI</span>
+                                <span class="tool-badge">Лучшее качество</span>
+                            </div>
+                            <p class="tool-desc">
+                                Самое высокое качество AI-моделей на 2026 год.
+                                Чистая quad-топология, PBR-текстуры 4K. Мебель и
+                                жёсткие поверхности &mdash; его сильная сторона.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Форматы:</strong> GLB, STL, USDZ +
+                                    PBR</span
+                                >
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong> от $24/мес (30
+                                    моделей)</span
+                                >
+                            </div>
+                            <div class="quality-bar">
+                                <span class="quality-label">Качество</span>
+                                <div class="quality-track">
+                                    <div
+                                        class="quality-fill"
+                                        style="width: 70%"
+                                    ></div>
+                                </div>
+                                <span class="quality-score">7/10</span>
+                            </div>
+                            <a
+                                href="https://hyper3d.ai/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="tool-link"
+                            >
+                                hyper3d.ai
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="tool-card reveal">
+                            <div class="tool-card-header">
+                                <span class="tool-name">Tripo AI</span>
+                                <span class="tool-badge">Цена/качество</span>
+                            </div>
+                            <p class="tool-desc">
+                                Фото &rarr; 3D за 10-30 секунд. Автоматически
+                                разделяет модель на логические части (ножки,
+                                сиденье, спинка) &mdash; удобно
+                                перетекстурировать по частям.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Форматы:</strong> GLB, OBJ, FBX,
+                                    STL</span
+                                >
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong> Бесплатно (600
+                                    кредитов/мес) или $19.90/мес</span
+                                >
+                            </div>
+                            <div class="quality-bar">
+                                <span class="quality-label">Качество</span>
+                                <div class="quality-track">
+                                    <div
+                                        class="quality-fill"
+                                        style="width: 55%"
+                                    ></div>
+                                </div>
+                                <span class="quality-score">5.5/10</span>
+                            </div>
+                            <a
+                                href="https://www.tripo3d.ai/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="tool-link"
+                            >
+                                tripo3d.ai
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="tool-card reveal reveal-delay-1">
+                            <div class="tool-card-header">
+                                <span class="tool-name">Sloyd AI</span>
+                                <span class="tool-badge">Параметрическое</span>
+                            </div>
+                            <p class="tool-desc">
+                                Не просто генерация, а умные шаблоны с
+                                ползунками. Описываешь &laquo;современный
+                                книжный шкаф, 5 полок, белый дуб&raquo; &rarr;
+                                получаешь модель &rarr; двигаешь ползунки
+                                (высота, ширина, кол-во полок).
+                            </p>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Идеально для:</strong> серии
+                                    похожей мебели</span
+                                >
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong> Бесплатно (без
+                                    экспорта) или $15/мес</span
+                                >
+                            </div>
+                            <div class="quality-bar">
+                                <span class="quality-label">Качество</span>
+                                <div class="quality-track">
+                                    <div
+                                        class="quality-fill"
+                                        style="width: 60%"
+                                    ></div>
+                                </div>
+                                <span class="quality-score">6/10</span>
+                            </div>
+                            <a
+                                href="https://www.sloyd.ai/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="tool-link"
+                            >
+                                sloyd.ai
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="callout reveal">
+                        <p>
+                            <strong>Честно:</strong> AI-модели в 2026 году не
+                            заменяют ручное моделирование для героевых объектов
+                            (главный диван, обеденный стол). Но для фоновых и
+                            второстепенных объектов (книги на полке, вазы,
+                            подушки, ковры) &mdash; экономят 2-4 часа на каждый
+                            предмет. Рабочий процесс: AI генерирует базу &rarr;
+                            дорабатываешь в 3ds Max (ретопология, UV, материалы)
+                            &rarr; ставишь в сцену. Доработка: 30-60 мин вместо
+                            2-4 часов с нуля.
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- TEXTURES -->
+            <section class="section" id="textures">
+                <div class="section-tag reveal">Текстуры и материалы</div>
+                <h2 class="section-title reveal reveal-delay-1">
+                    AI-генерация текстур
+                </h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    Описываешь материал словами или загружаешь фото &mdash;
+                    получаешь полный набор PBR-карт за секунды.
+                </p>
+
+                <div class="tools-grid">
+                    <div class="tool-card reveal">
+                        <div class="tool-card-header">
+                            <span class="tool-name">WithPoly</span>
+                            <span class="tool-badge">До 8K, 32-bit</span>
+                        </div>
+                        <p class="tool-desc">
+                            Пишешь &laquo;состаренная латунь с зелёной
+                            патиной&raquo; или &laquo;венецианская штукатурка,
+                            тёплый кремовый&raquo; &rarr; получаешь полный набор
+                            PBR-карт (Color, Normal, Height, AO, Roughness,
+                            Metalness). До 8K в 32-bit EXR &mdash; серьёзное
+                            продакшн-качество.
+                        </p>
+                        <div class="tool-meta">
+                            <span class="tool-meta-item"
+                                ><strong>Цена:</strong> Бесплатно (10/мес, 2K) |
+                                $9.99 (4K) | $19.99 (8K)</span
+                            >
+                            <span class="tool-meta-item"
+                                ><strong>Экономия:</strong> 1-2 часа &rarr; 5
+                                минут</span
+                            >
+                        </div>
+                        <a
+                            href="https://withpoly.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="tool-link"
+                        >
+                            withpoly.com
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="tool-card reveal reveal-delay-1">
+                        <div class="tool-card-header">
+                            <span class="tool-name">GenPBR</span>
+                            <span class="tool-badge free"
+                                >Полностью бесплатно</span
+                            >
+                        </div>
+                        <p class="tool-desc">
+                            Загружаешь любое фото поверхности &rarr; получаешь
+                            PBR-карты (normal, roughness, height, AO, metallic).
+                            Без регистрации, без ограничений. Качество чуть ниже
+                            WithPoly, но для быстрых задач &mdash; отлично.
+                        </p>
+                        <div class="tool-meta">
+                            <span class="tool-meta-item"
+                                ><strong>Цена:</strong> $0, навсегда</span
+                            >
+                        </div>
+                        <a
+                            href="https://genpbr.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="tool-link"
+                        >
+                            genpbr.com
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONCEPTS -->
+            <div class="section-alt">
+                <section class="section" id="concepts">
+                    <div class="section-tag reveal">Концепты и клиенты</div>
+                    <h2 class="section-title reveal reveal-delay-1">
+                        AI для концепт-визуализации
+                    </h2>
+                    <p class="section-desc reveal reveal-delay-2">
+                        Показать клиенту 10 вариантов стиля за 30 минут &mdash;
+                        до того как ты откроешь 3ds Max. Это не замена рендерам,
+                        а быстрый способ утвердить направление.
+                    </p>
+
+                    <div class="tools-grid">
+                        <div class="tool-card featured reveal">
+                            <div class="tool-card-header">
+                                <span class="tool-name">Midjourney</span>
+                                <span class="tool-badge"
+                                    >Главный инструмент</span
+                                >
+                            </div>
+                            <p class="tool-desc">
+                                Описываешь интерьер текстом &rarr;
+                                фотореалистичная картинка за 30 секунд. Как
+                                дизайнеры используют:
+                            </p>
+                            <ul
+                                style="
+                                    list-style: none;
+                                    margin: 1rem 0;
+                                    padding: 0;
+                                "
+                            >
+                                <li
+                                    style="
+                                        padding: 0.4rem 0;
+                                        color: var(--text2);
+                                        font-size: 0.88rem;
+                                        font-weight: 300;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--gold);
+                                            margin-right: 0.5rem;
+                                        "
+                                        >01</span
+                                    >
+                                    20-30 вариантов стиля за 30 минут (вместо
+                                    дней на Pinterest)
+                                </li>
+                                <li
+                                    style="
+                                        padding: 0.4rem 0;
+                                        color: var(--text2);
+                                        font-size: 0.88rem;
+                                        font-weight: 300;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--gold);
+                                            margin-right: 0.5rem;
+                                        "
+                                        >02</span
+                                    >
+                                    5-10 направлений для клиента ДО начала
+                                    работы в 3ds Max
+                                </li>
+                                <li
+                                    style="
+                                        padding: 0.4rem 0;
+                                        color: var(--text2);
+                                        font-size: 0.88rem;
+                                        font-weight: 300;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--gold);
+                                            margin-right: 0.5rem;
+                                        "
+                                        >03</span
+                                    >
+                                    Re-Texture Mode: фото реальной комнаты
+                                    &rarr; AI меняет материалы, мебель, свет
+                                </li>
+                                <li
+                                    style="
+                                        padding: 0.4rem 0;
+                                        color: var(--text2);
+                                        font-size: 0.88rem;
+                                        font-weight: 300;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            color: var(--gold);
+                                            margin-right: 0.5rem;
+                                        "
+                                        >04</span
+                                    >
+                                    8 стилей одной комнаты без единого рендера
+                                </li>
+                            </ul>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong> $10/мес (базовый) |
+                                    $30/мес (безлимит)</span
+                                >
+                                <span class="tool-meta-item"
+                                    ><strong>Экономия:</strong> фаза концепции с
+                                    1-2 недель до 1-2 дней</span
+                                >
+                            </div>
+                            <a
+                                href="https://midjourney.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="tool-link"
+                            >
+                                midjourney.com
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="tool-card reveal">
+                            <div class="tool-card-header">
+                                <span class="tool-name">Rendair AI</span>
+                                <span class="tool-badge"
+                                    >Скетч &rarr; рендер</span
+                                >
+                            </div>
+                            <p class="tool-desc">
+                                Загружаешь скетч, блокаут из SketchUp или
+                                скриншот вьюпорта &rarr; фотореалистичная
+                                картинка. AI-апскейлер, заточенный именно под
+                                архитектурные рендеры.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong> $15/мес (500
+                                    кредитов)</span
+                                >
+                            </div>
+                            <a
+                                href="https://rendair.ai/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="tool-link"
+                            >
+                                rendair.ai
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="tool-card reveal reveal-delay-1">
+                            <div class="tool-card-header">
+                                <span class="tool-name"
+                                    >Stable Diffusion + ControlNet</span
+                                >
+                                <span class="tool-badge free">Бесплатно</span>
+                            </div>
+                            <p class="tool-desc">
+                                Open-source AI генерация. ControlNet берёт
+                                depth-pass из 3ds Max &rarr; генерирует
+                                визуализацию, сохраняя геометрию комнаты.
+                                Безлимитно, данные остаются у тебя.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong> $0 (нужна видеокарта
+                                    NVIDIA)</span
+                                >
+                                <span class="tool-meta-item"
+                                    ><strong>Минус:</strong> сложнее в
+                                    настройке</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- SEARCH -->
+            <section class="section" id="search">
+                <div class="section-tag reveal">Поиск моделей</div>
+                <h2 class="section-title reveal reveal-delay-1">
+                    Умный поиск 3D-моделей
+                </h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    Вместо часов поиска по ключевым словам &mdash; описываешь
+                    обычными словами или загружаешь фото.
+                </p>
+
+                <div class="tools-grid">
+                    <div class="tool-card reveal">
+                        <div class="tool-card-header">
+                            <span class="tool-name">CGTrader AI Search</span>
+                            <span class="tool-badge free">Бесплатно</span>
+                        </div>
+                        <p class="tool-desc">
+                            Описываешь мебель обычными словами вместо ключевых
+                            &rarr; AI находит подходящие модели. Кнопка
+                            &laquo;найти похожее&raquo; на любой модели &mdash;
+                            нашла один стул, нажала, и видишь все похожие.
+                        </p>
+                        <a
+                            href="https://www.cgtrader.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="tool-link"
+                        >
+                            cgtrader.com
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="tool-card reveal reveal-delay-1">
+                        <div class="tool-card-header">
+                            <span class="tool-name">Thangs</span>
+                            <span class="tool-badge free">Бесплатно</span>
+                        </div>
+                        <p class="tool-desc">
+                            Поиск по форме: загружаешь фото или 3D-модель &rarr;
+                            AI находит геометрически похожие модели среди
+                            миллионов. Понимает форму, а не только слова.
+                        </p>
+                        <a
+                            href="https://thangs.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="tool-link"
+                        >
+                            thangs.com
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="tool-card reveal">
+                        <div class="tool-card-header">
+                            <span class="tool-name">3dsky.org / 3ddd.ru</span>
+                            <span class="tool-badge">Крупнейшая база СНГ</span>
+                        </div>
+                        <p class="tool-desc">
+                            Крупнейшая библиотека моделей для архвиза в
+                            русскоязычном сообществе. Огромная коллекция ковров,
+                            мебели, декора для 3ds Max с V-Ray и Corona
+                            материалами.
+                        </p>
+                        <a
+                            href="https://3dsky.org/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="tool-link"
+                        >
+                            3dsky.org
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="tool-card reveal reveal-delay-1">
+                        <div class="tool-card-header">
+                            <span class="tool-name">Polycam</span>
+                            <span class="tool-badge free">Бесплатно</span>
+                        </div>
+                        <p class="tool-desc">
+                            3D-сканер в телефоне. Сканируешь реальную комнату
+                            или мебель камерой iPhone/iPad &rarr; получаешь
+                            3D-модель. Отсканировать существующую мебель клиента
+                            для рендера, снять обмеры.
+                        </p>
+                        <div class="tool-meta">
+                            <span class="tool-meta-item"
+                                ><strong>Форматы:</strong> FBX, OBJ + ещё
+                                15</span
+                            >
+                        </div>
+                        <a
+                            href="https://poly.cam/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="tool-link"
+                        >
+                            poly.cam
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AUTOMATION -->
+            <div class="section-alt">
+                <section class="section" id="automation">
+                    <div class="section-tag reveal">Автоматизация</div>
+                    <h2 class="section-title reveal reveal-delay-1">
+                        Рутина на автопилоте
+                    </h2>
+                    <p class="section-desc reveal reveal-delay-2">
+                        AI отлично справляется с текстовой рутиной, которая
+                        отнимает время от творческой работы.
+                    </p>
+
+                    <div class="tools-grid">
+                        <div class="tool-card reveal">
+                            <div class="tool-card-header">
+                                <span class="tool-name">ChatGPT / Claude</span>
+                                <span class="tool-badge">Текстовая работа</span>
+                            </div>
+                            <p class="tool-desc">
+                                Всё, что связано с текстами: описания проектов
+                                для Behance (на русском и английском), обработка
+                                клиентских брифов, чек-листы для сцен,
+                                коммерческие предложения, переводы для
+                                зарубежных клиентов.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong> Бесплатно или
+                                    $20/мес</span
+                                >
+                                <span class="tool-meta-item"
+                                    ><strong>Экономия:</strong> 5-10
+                                    часов/неделю</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="tool-card reveal reveal-delay-1">
+                            <div class="tool-card-header">
+                                <span class="tool-name">Morpholio Board</span>
+                                <span class="tool-badge">iPad</span>
+                            </div>
+                            <p class="tool-desc">
+                                AI подбирает материалы, мебель и палитры от
+                                реальных брендов. Автоматически создаёт
+                                спецификации и сметы. Подбор материалов быстрее
+                                на 35%.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong>
+                                    $4.99-11.99/мес</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="tool-card reveal">
+                            <div class="tool-card-header">
+                                <span class="tool-name">Khroma</span>
+                                <span class="tool-badge free">Бесплатно</span>
+                            </div>
+                            <p class="tool-desc">
+                                Выбираешь 50 цветов, которые тебе нравятся
+                                &rarr; AI учится на твоих предпочтениях и
+                                генерирует тысячи палитр в твоём стиле.
+                                Персональный генератор цветовых схем.
+                            </p>
+                            <a
+                                href="https://www.khroma.co/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="tool-link"
+                            >
+                                khroma.co
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="tool-card reveal reveal-delay-1">
+                            <div class="tool-card-header">
+                                <span class="tool-name">Maket AI</span>
+                                <span class="tool-badge">Планировки</span>
+                            </div>
+                            <p class="tool-desc">
+                                Описываешь что хочешь обычными словами &rarr;
+                                получаешь планировку за 2 минуты. Несколько
+                                вариантов для клиента за один вечер вместо
+                                целого дня.
+                            </p>
+                            <div class="tool-meta">
+                                <span class="tool-meta-item"
+                                    ><strong>Цена:</strong> Бесплатно (1 проект)
+                                    | $30/мес</span
+                                >
+                            </div>
+                            <a
+                                href="https://www.maket.ai/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="tool-link"
+                            >
+                                maket.ai
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- START -->
+            <section class="section" id="start">
+                <div class="section-tag reveal">Пошаговый план</div>
+                <h2 class="section-title reveal reveal-delay-1">
+                    С чего начать?
+                </h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    Каждый шаг можно внедрить за 1 день. Начни с первого &mdash;
+                    увидишь разницу сразу.
+                </p>
+
+                <div class="steps">
+                    <div class="step reveal">
+                        <div class="step-num">01</div>
+                        <div class="step-content">
+                            <h3>Включи AI Denoiser в Corona</h3>
+                            <p>
+                                Render Settings &gt; Denoising &gt; Intel AI или
+                                NVIDIA GPU AI. Рендеры станут в 5-15 раз
+                                быстрее. Это уже есть в твоей подписке.
+                            </p>
+                            <span class="step-tag"
+                                >Бесплатно &middot; 5 минут</span
+                            >
+                        </div>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step-num">02</div>
+                        <div class="step-content">
+                            <h3>Попробуй Cosmos AI Material Generator</h3>
+                            <p>
+                                Сфоткай любую поверхность (мрамор, дерево,
+                                ткань) &rarr; загрузи в Cosmos &rarr; получи
+                                готовый PBR-материал. Входит в подписку Corona.
+                            </p>
+                            <span class="step-tag"
+                                >Бесплатно &middot; 10 минут</span
+                            >
+                        </div>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step-num">03</div>
+                        <div class="step-content">
+                            <h3>Зарегистрируйся на Meshy AI</h3>
+                            <p>
+                                Попробуй сгенерировать декоративный предмет для
+                                текущего проекта. 200 бесплатных кредитов в
+                                месяц &mdash; хватит на 8-10 моделей.
+                            </p>
+                            <span class="step-tag"
+                                >Бесплатно &middot; 15 минут</span
+                            >
+                        </div>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step-num">04</div>
+                        <div class="step-content">
+                            <h3>Попробуй Midjourney</h3>
+                            <p>
+                                Сгенерируй концепты для следующего клиента.
+                                Опиши интерьер своими словами и посмотри, что
+                                получится. Это не замена рендерам &mdash; это
+                                способ быстро утвердить направление.
+                            </p>
+                            <span class="step-tag"
+                                >$10/мес &middot; 30 минут</span
+                            >
+                        </div>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step-num">05</div>
+                        <div class="step-content">
+                            <h3>Используй ChatGPT / Claude для текстов</h3>
+                            <p>
+                                Описания проектов для Behance, письма клиентам,
+                                обработка брифов, коммерческие предложения.
+                                Экономия 5-10 часов в неделю на текстовой
+                                рутине.
+                            </p>
+                            <span class="step-tag"
+                                >Бесплатно &middot; Сразу</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BUDGET -->
+            <div class="section-alt">
+                <section class="section" id="budget">
+                    <div class="section-tag reveal">Бюджет</div>
+                    <h2 class="section-title reveal reveal-delay-1">
+                        Сколько это стоит
+                    </h2>
+                    <p class="section-desc reveal reveal-delay-2">
+                        При экономии 15-30 часов в месяц даже максимальный набор
+                        окупается с первого проекта.
+                    </p>
+
+                    <div class="budget-grid">
+                        <div class="budget-card reveal">
+                            <div class="budget-level">Бесплатно</div>
+                            <div class="budget-price">$0</div>
+                            <div class="budget-price-note">навсегда</div>
+                            <ul class="budget-list">
+                                <li>Corona AI Denoiser</li>
+                                <li>Cosmos Material Gen</li>
+                                <li>Meshy Free (200 кредитов)</li>
+                                <li>GenPBR</li>
+                                <li>ChatGPT Free</li>
+                                <li>Thangs, CGTrader AI</li>
+                            </ul>
+                        </div>
+                        <div
+                            class="budget-card recommended reveal reveal-delay-1"
+                        >
+                            <div class="budget-level">Базовый</div>
+                            <div class="budget-price">~$50</div>
+                            <div class="budget-price-note">в месяц</div>
+                            <ul class="budget-list">
+                                <li>Всё из бесплатного</li>
+                                <li>Midjourney Standard</li>
+                                <li>ChatGPT Plus</li>
+                            </ul>
+                        </div>
+                        <div class="budget-card reveal reveal-delay-2">
+                            <div class="budget-level">Продвинутый</div>
+                            <div class="budget-price">~$100</div>
+                            <div class="budget-price-note">в месяц</div>
+                            <ul class="budget-list">
+                                <li>Всё из базового</li>
+                                <li>Meshy Pro</li>
+                                <li>WithPoly</li>
+                                <li>Morpholio Board</li>
+                            </ul>
+                        </div>
+                        <div class="budget-card reveal reveal-delay-3">
+                            <div class="budget-level">Максимум</div>
+                            <div class="budget-price">~$180</div>
+                            <div class="budget-price-note">в месяц</div>
+                            <ul class="budget-list">
+                                <li>Всё из продвинутого</li>
+                                <li>Rodin AI</li>
+                                <li>Rendair AI</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>
+                Подготовлено с заботой, 2026. Все инструменты проверены и
+                актуальны на март 2026.
+            </p>
+        </footer>
+
+        <script>
+            // Scroll progress bar
+            const scrollProgress = document.getElementById("scrollProgress");
+            const backToTop = document.getElementById("backToTop");
+            let ticking = false;
+
+            window.addEventListener(
+                "scroll",
+                function () {
+                    if (!ticking) {
+                        requestAnimationFrame(function () {
+                            const scrollTop = window.scrollY;
+                            const docHeight =
+                                document.documentElement.scrollHeight -
+                                window.innerHeight;
+                            const scrollPercent = (scrollTop / docHeight) * 100;
+                            scrollProgress.style.width = scrollPercent + "%";
+
+                            if (scrollTop > 400) {
+                                backToTop.classList.add("visible");
+                            } else {
+                                backToTop.classList.remove("visible");
+                            }
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                },
+                { passive: true },
+            );
+
+            // Scroll reveal
+            const revealElements = document.querySelectorAll(".reveal");
+            const observer = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+            );
+
+            revealElements.forEach(function (el) {
+                observer.observe(el);
+            });
+
+            // Smooth scroll for nav links
+            document.querySelectorAll(".nav-toc a").forEach(function (link) {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(
+                        this.getAttribute("href"),
+                    );
+                    if (target) {
+                        const offset = 80;
+                        const top =
+                            target.getBoundingClientRect().top +
+                            window.scrollY -
+                            offset;
+                        window.scrollTo({ top: top, behavior: "smooth" });
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
